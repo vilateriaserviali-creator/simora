@@ -15,12 +15,12 @@ body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-ser
 .switch{display:flex;padding:4px;background:#d1c0a6;border:1px solid #b29b7c;border-radius:12px;gap:4px}.switch button{border:0;background:transparent;color:#6f5d4c;padding:9px 15px;border-radius:8px;cursor:pointer}.switch button.active{background:#9a896d;color:#fff2e3}
 .tree-area{height:calc(100vh - 97px);min-height:600px;position:relative;overflow:hidden;border:1px solid #b8a484;border-radius:24px;background:radial-gradient(circle at 50% 42%,#efe3d0 0,#e4d5bc 48%,#d2bea0 100%);cursor:grab;box-shadow:0 20px 55px #6f573d25}.tree-area.dragging{cursor:grabbing}
 .tree-title{position:absolute;z-index:20;top:22px;left:25px}.tree-title h2{font-family:Georgia,serif;font-size:19px;color:#4b392d}.tree-title p{color:var(--muted);font-size:11px;margin-top:5px}.hint{position:absolute;right:24px;bottom:18px;color:#746d78;font-size:11px;z-index:20}
-.canvas{position:absolute;width:1500px;height:900px;left:50%;top:50%;transform:translate(-50%,-50%);transform-origin:center;transition:transform .08s linear}.lines{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
-.connection{stroke:#967c60;stroke-width:3;fill:none;stroke-linecap:round}.connection.soft{stroke:#a99175;stroke-width:2}
+.canvas{position:absolute;width:1500px;height:900px;left:50%;top:50%;transform:translate(-50%,-50%);transform-origin:center;transition:transform .08s linear}.tree-art{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}.lines{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.connection{stroke:#9b8060;stroke-width:1.5;opacity:.32;fill:none;stroke-linecap:round}.connection.soft{stroke:#aa9274;stroke-width:1;opacity:.25}
 .node{position:absolute;width:150px;text-align:center;z-index:4;cursor:pointer;user-select:none;transition:filter .2s,transform .2s}.node:hover{filter:brightness(1.16)}.node.selected{filter:brightness(1.2)}
-.leaf{width:92px;height:92px;margin:auto;border-radius:54% 46% 52% 48%;background:linear-gradient(145deg,#b8c09d,#9ca987);border:3px solid #7f8d6f;box-shadow:0 12px 28px #70563c35;display:flex;align-items:center;justify-content:center;position:relative;transform:rotate(-2deg)}.leaf:after{content:"";position:absolute;width:18px;height:31px;right:-10px;bottom:-11px;border-radius:3px 100% 3px 100%;background:#594d60;transform:rotate(35deg)}
+.leaf{width:98px;height:98px;margin:auto;border-radius:54% 46% 52% 48%;background:linear-gradient(145deg,#b8c09d,#9ca987);border:3px solid #7f8d6f;box-shadow:0 12px 28px #70563c35;display:flex;align-items:center;justify-content:center;position:relative;transform:rotate(-2deg)}.leaf:after{content:"";position:absolute;width:18px;height:31px;right:-10px;bottom:-11px;border-radius:3px 100% 3px 100%;background:#594d60;transform:rotate(35deg)}
 .avatar{width:68px;height:68px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(145deg,#c9b49a,#9b8069);border:3px solid #f0dfc6;font-weight:700;font-size:22px;color:#594636;transform:rotate(2deg);box-shadow:0 5px 14px #60472d25}.node.dead .leaf{filter:grayscale(.7);opacity:.65}.node.dead .avatar{background:#39353b}.name{font-family:Georgia,serif;font-size:15px;font-weight:650;margin-top:12px;color:#49372c}.meta{font-size:10px;color:#776452;margin-top:4px}
-.evelyn{left:675px;top:72px}.alice{left:405px;top:350px}.james{left:945px;top:350px}.emma{left:405px;top:625px}.noah{left:675px;top:625px}.lily{left:945px;top:625px}
+.evelyn{left:675px;top:55px}.alice{left:335px;top:300px}.james{left:995px;top:300px}.emma{left:330px;top:570px}.noah{left:675px;top:570px}.lily{left:1000px;top:570px}
 .profile{position:absolute;right:18px;top:72px;width:245px;background:#e5d7c2ee;border:1px solid #b49c7d;border-radius:17px;padding:17px;z-index:30;backdrop-filter:blur(14px);box-shadow:0 20px 50px #765f4330;opacity:0;transform:translateX(18px);pointer-events:none;transition:.22s}.profile.show{opacity:1;transform:translateX(0);pointer-events:auto}.profile .big{width:58px;height:58px;border-radius:50%;background:#b4aa91;border:2px solid #8f8069;display:grid;place-items:center;font-weight:700;font-size:21px;margin-bottom:11px;color:#554332}.profile h3{font-size:18px}.profile .small{color:var(--muted);font-size:11px;margin-top:4px}.stats{display:grid;gap:8px;margin-top:16px}.stat{padding:9px 10px;border-radius:10px;background:#d5c4aa;font-size:11px;color:#6f5c49}.stat b{color:#4c392c;font-weight:600}
 .constellation .leaf{border-radius:50%;width:58px;height:58px;background:#a9b08d;border-color:#7e896d;box-shadow:0 0 25px #8a9a7244}.constellation .avatar{width:42px;height:42px;font-size:15px}.constellation .name,.constellation .meta{margin-top:8px}.starfield{position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(circle,#8d7b65 1px,transparent 1px),radial-gradient(circle,#a79578 1px,transparent 1px);background-size:137px 137px,211px 211px;background-position:18px 30px,77px 91px;opacity:.16}
 .modal{position:fixed;inset:0;background:#5c493755;display:flex;align-items:center;justify-content:center;z-index:100;opacity:0;pointer-events:none;transition:.2s}.modal.show{opacity:1;pointer-events:auto}.dialog{width:430px;background:#e3d3bc;border:1px solid #b39a79;border-radius:20px;padding:24px;box-shadow:0 30px 90px #0008}.dialog h2{font-size:20px}.dialog p{font-size:12px;color:var(--muted);margin-top:5px;margin-bottom:20px}.form{display:grid;gap:12px}.field label{display:block;font-size:11px;color:#a79eaa;margin-bottom:6px}.field input,.field select{width:100%;border:1px solid #b39c7e;background:#d7c6aa;color:#4b392d;border-radius:10px;padding:11px 12px;outline:none}.field input:focus,.field select:focus{border-color:#75627f}.form-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:8px}.empty-add{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);padding:12px 16px;border:1px solid #4c4053;background:#29232e;color:#eee;border-radius:12px;cursor:pointer}
@@ -54,6 +54,7 @@ body{background:radial-gradient(ellipse at 50% 0%,#f0e1c9 0%,#e6d5b9 43%,#d3bea0
 .switch{background:#cfbda1;border-color:#ae9472;box-shadow:inset 0 1px #eadcc6}
 .switch button.active{background:#8b7a60;box-shadow:0 4px 12px #60472d20}
 .tree-area{border:1px solid #b69d79;background:radial-gradient(circle at 50% 40%,#f0e2cc 0%,#e5d4b8 48%,#d4bea0 100%);box-shadow:0 25px 65px #71573b24,inset 0 1px #f4e7d3}
+.tree-area:after{content:"✦  •  ✦  •  ✦";position:absolute;top:86px;left:50%;transform:translateX(-50%);color:#a28a63;font-size:11px;letter-spacing:18px;opacity:.45;pointer-events:none}
 .tree-area:before{content:"";position:absolute;inset:14px;border:1px solid #bba48655;border-radius:17px;pointer-events:none}
 .tree-title{top:27px;left:30px}
 .tree-title h2{font-size:21px;color:#4b382b;letter-spacing:.2px}
@@ -62,7 +63,7 @@ body{background:radial-gradient(ellipse at 50% 0%,#f0e1c9 0%,#e6d5b9 43%,#d3bea0
 .branch{stroke:#76543b;stroke-width:15;filter:drop-shadow(0 9px 9px #60472d26)}
 .branch.thin{stroke:#8d6c4e;stroke-width:8}.branch.twig{stroke:#a18463;stroke-width:4}
 .leaf{background:linear-gradient(145deg,#b9c19d,#929f79);border:3px solid #71805f;box-shadow:0 13px 30px #5e493126, inset 0 2px #d9dec0}
-.leaf:after{background:#7d8b68}
+.leaf:after{background:#788866;box-shadow:2px 2px 0 #6e7d5d}
 .avatar{background:linear-gradient(145deg,#d0b99b,#9f8064);border-color:#f0dfc5;color:#574332;box-shadow:0 6px 16px #60472d24}
 .name{color:#49372b;font-size:15px}
 .meta{color:#806c56}
@@ -93,7 +94,36 @@ body{background:radial-gradient(ellipse at 50% 0%,#f0e1c9 0%,#e6d5b9 43%,#d3bea0
 <main class="main">
 <div class="topbar"><div class="title">Blackwood Legacy</div><div class="actions"><button class="action primary" id="addBtn">＋ Добавить сима</button><div class="switch"><button class="active" data-view="tree">🌳 Дерево</button><button data-view="constellation">✦ Созвездие</button></div></div></div>
 <section class="tree-area" id="area"><div class="starfield"></div><div class="tree-title"><h2>Blackwood</h2><p id="counter">3 поколения · 6 персонажей</p></div>
-<div class="canvas" id="canvas"><svg class="lines" viewBox="0 0 1500 900" id="lines"></svg><div id="nodes"></div></div>
+<div class="canvas" id="canvas">
+<svg class="tree-art" viewBox="0 0 1500 900" aria-hidden="true">
+<defs>
+ <linearGradient id="trunk" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#5f432f"/><stop offset=".5" stop-color="#8b6748"/><stop offset="1" stop-color="#60432e"/></linearGradient>
+ <filter id="treeShadow"><feGaussianBlur stdDeviation="7"/></filter>
+</defs>
+<g opacity=".16" filter="url(#treeShadow)" fill="none" stroke="#5c442f" stroke-linecap="round">
+ <path d="M750 875 C735 730 742 590 750 470 C755 360 748 250 750 105" stroke-width="44"/>
+ <path d="M748 520 C650 450 555 385 410 330" stroke-width="28"/>
+ <path d="M752 515 C850 445 950 380 1090 330" stroke-width="28"/>
+</g>
+<g fill="none" stroke="url(#trunk)" stroke-linecap="round" stroke-linejoin="round">
+ <path d="M750 875 C735 730 742 590 750 470 C755 360 748 250 750 105" stroke-width="34"/>
+ <path d="M748 545 C660 480 555 405 410 350" stroke-width="21"/>
+ <path d="M752 545 C840 480 950 405 1090 350" stroke-width="21"/>
+ <path d="M748 670 C670 610 590 555 500 520" stroke-width="14"/>
+ <path d="M752 670 C830 610 910 555 1000 520" stroke-width="14"/>
+ <path d="M750 395 C685 340 610 300 520 270" stroke-width="11"/>
+ <path d="M750 395 C815 340 890 300 980 270" stroke-width="11"/>
+</g>
+<g fill="none" stroke="#9a7957" stroke-linecap="round">
+ <path d="M520 270 C485 240 450 215 415 195" stroke-width="7"/>
+ <path d="M980 270 C1015 240 1050 215 1085 195" stroke-width="7"/>
+ <path d="M410 350 C365 320 330 295 295 265" stroke-width="7"/>
+ <path d="M1090 350 C1135 320 1170 295 1205 265" stroke-width="7"/>
+ <path d="M500 520 C455 500 415 475 380 440" stroke-width="6"/>
+ <path d="M1000 520 C1045 500 1085 475 1120 440" stroke-width="6"/>
+</g>
+</svg>
+<svg class="lines" viewBox="0 0 1500 900" id="lines"></svg><div id="nodes"></div></div>
 <div class="profile" id="profile"><div class="big" id="profileAvatar">A</div><h3 id="profileName">Alice Blackwood</h3><div class="small" id="profileGen">II поколение</div><div class="stats"><div class="stat" id="profileInfo"></div><div class="stat" id="profileStatus"></div><div class="stat"><b>Ветка:</b> Blackwood</div></div></div>
 <div class="hint">Перетаскивай дерево мышью · Колесо — масштаб</div></section>
 </main></div>
