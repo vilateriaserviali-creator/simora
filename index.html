@@ -32,48 +32,30 @@ body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-ser
 .constellation .branch{stroke:#8c765e;stroke-width:2;filter:drop-shadow(0 0 8px #b5965a44)}
 .photo-note{font-size:10px;color:#756c79}
 
-/* SIMORA botanical art direction */
-.tree-area{background:
- radial-gradient(ellipse at 50% 18%,#f1e4cf 0%,transparent 38%),
- radial-gradient(ellipse at 20% 72%,#c6b28f55 0%,transparent 30%),
- radial-gradient(ellipse at 82% 65%,#b6a27e44 0%,transparent 34%),
- linear-gradient(135deg,#e5d3b4,#d8c19f 55%,#cbb38e 100%);
-}
-.tree-area:before{inset:12px;border:1px solid #a98d6870;box-shadow:inset 0 0 80px #765a3820}
-.tree-title{top:25px;left:28px}
-.tree-title h2{font-family:Georgia,serif;font-size:23px;letter-spacing:.2px;color:#4a3628}
-.tree-title p{font-size:11px;letter-spacing:.5px;color:#80674e}
+/* SIMORA final botanical composition */
+.tree-area{background:radial-gradient(ellipse at 50% 20%,#f0e2cb 0,#e6d4b5 42%,#d4bc98 100%);box-shadow:0 26px 70px #60472d24,inset 0 1px #f7ead5}
+.tree-area:before{inset:12px;border:1px solid #a78b6870;box-shadow:inset 0 0 100px #74553418}
 .canvas{width:1560px;height:930px}
-.tree-art{filter:drop-shadow(0 12px 12px #60472d1b)}
-.node{width:180px;transition:transform .25s ease,filter .25s ease}
-.node:hover{transform:translateY(-5px) scale(1.015);filter:brightness(1.03)}
-.leaf{width:150px;height:184px}
-.avatar{width:108px;height:138px;border-radius:55px 55px 48px 48px;border:5px solid #dfcba7;background:#ad9577;box-shadow:0 12px 26px #503a282e}
-.avatar:before{content:"";position:absolute;inset:-9px;border:1px solid #aa895d;border-radius:60px 60px 54px 54px;z-index:-1}
-.ivy{inset:-10px;width:170px;height:204px}
-.ivy-stem{stroke:#506c45;stroke-width:3.8;filter:drop-shadow(0 2px 1px #3e302244)}
-.ivy-leaves path{fill:#70895a;stroke:#536e46;stroke-width:1;filter:drop-shadow(0 2px 2px #40312438)}
-.ivy-leaves path:nth-child(2n){fill:#8da56e}
-.ivy-leaves path:nth-child(3n){fill:#5f7a4d}
-.name{margin-top:0;padding:7px 20px 8px;background:linear-gradient(180deg,#e6d4b2,#d3bb91);border:1px solid #a8865d;border-radius:6px 6px 12px 12px;box-shadow:0 6px 15px #5b402827;font-size:14px;min-width:100px}
-.name:before{content:"";position:absolute;left:50%;top:-4px;width:7px;height:7px;transform:translateX(-50%) rotate(45deg);background:#c5a777;border-left:1px solid #9d7c54;border-top:1px solid #9d7c54}
-.meta{font-size:10px;color:#776047;letter-spacing:.2px}
-.node.dead .avatar{filter:grayscale(.7);opacity:.8}
-.node.dead .ivy-leaves path{fill:#8f866c;stroke:#756b55}
-.node.selected .avatar{border-color:#b4955f;box-shadow:0 0 0 4px #b4955f35,0 15px 30px #4d39283b}
-.node.selected .ivy-stem{stroke:#45613b;stroke-width:4.3}
-.profile{background:#e4d3b8f5;border:1px solid #aa8b63;box-shadow:0 25px 60px #58412b35}
-.profile .big{border-color:#a48761}
-.action{background:#dfc9a7;border-color:#ad8e66}
-.action.primary{background:linear-gradient(135deg,#76563f,#947052);border-color:#6d4d38}
-.switch{background:#cfb795;border-color:#a98a62}
-.switch button.active{background:#806b51}
-.sidebar{background:linear-gradient(180deg,#d3bea0,#c2aa86);border-color:#a98e6b}
-.sidebar:before{content:"";position:absolute;right:-1px;top:0;bottom:0;width:1px;background:#ead9bd80}
-.logo{font-size:30px;color:#4b3628}
-.menu button.active{background:linear-gradient(100deg,#b39b78,#c3aa83);box-shadow:0 8px 24px #624a3020}
-.hint{background:#d6c09fdd;color:#705a42;border-color:#ad906c}
-@media (max-width:1200px){.canvas{width:1450px}}
+.tree-art{filter:drop-shadow(0 15px 12px #60472d1b)}
+.branch{stroke:#704c35;stroke-width:19;fill:none;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 7px 7px #5d432d2b)}
+.branch.thin{stroke:#866347;stroke-width:10}.branch.twig{stroke:#a07e59;stroke-width:5}
+.node{width:180px;z-index:8}
+.leaf{width:160px;height:190px;background:none;border:0;box-shadow:none;transform:none}
+.avatar{width:112px;height:142px;border-radius:58px 58px 50px 50px;border:5px solid #e0c9a3;background:#b69a78;box-shadow:0 13px 28px #503a282f;overflow:hidden;position:relative;z-index:3}
+.avatar:after{content:"";position:absolute;inset:3px;border:1px solid #9b7b52;border-radius:54px 54px 46px 46px;pointer-events:none}
+.avatar img{width:100%;height:100%;object-fit:cover;display:block}.avatar .initial{display:grid;place-items:center;width:100%;height:100%;font-family:Georgia,serif;font-size:34px;color:#604934}
+.ivy{position:absolute;z-index:5;left:0;top:0;width:160px;height:190px;overflow:visible;pointer-events:none}
+.ivy-stem{fill:none;stroke:#506b43;stroke-width:4.2;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 2px 2px #3d302333)}
+.ivy-tendril{fill:none;stroke:#71895b;stroke-width:1.8;stroke-linecap:round;opacity:.9}
+.ivy-leaves path{fill:#748d5d;stroke:#526b43;stroke-width:1;filter:drop-shadow(0 2px 2px #40312430)}
+.ivy-leaves path:nth-child(2n){fill:#91a96f}.ivy-leaves path:nth-child(3n){fill:#607c4d}
+.node.dead .ivy-stem{stroke:#7f765f}.node.dead .ivy-leaves path{fill:#91866b;stroke:#746b55}
+.node:hover .ivy-stem{stroke:#405d36;stroke-width:4.7}.node:hover .ivy-leaves path{filter:drop-shadow(0 3px 4px #40312442)}
+.name{margin-top:-1px;padding:7px 19px 8px;background:linear-gradient(#e6d4b2,#d2b98d);border:1px solid #a7865b;border-radius:6px 6px 11px 11px;box-shadow:0 7px 15px #5a40272a;font-family:Georgia,serif;font-size:14px;color:#49362a}
+.meta{font-size:10px;color:#765f47;margin-top:4px}
+.node.selected .avatar{border-color:#b2935d;box-shadow:0 0 0 4px #b2935d35,0 16px 30px #4d38273b}
+.node.selected .ivy-stem{stroke:#3e5b35}
+.evelyn{left:670px;top:35px}.alice{left:315px;top:285px}.james{left:1005px;top:285px}.emma{left:315px;top:565px}.noah{left:670px;top:565px}.lily{left:1005px;top:565px}
 </style>
 </head>
 <body>
@@ -139,9 +121,9 @@ const seed=[
 {id:'lily',first:'Lily',last:'Blackwood',gen:'III',status:'Умерла',info:'Дочь James · Умерла в 2024 · Память рода',x:945,y:625}
 ];
 let custom=JSON.parse(localStorage.getItem('simora-custom')||'[]');let people=[...seed,...custom];
-function renderPeople(){nodesEl.innerHTML='';lines.innerHTML='';people.forEach((p,i)=>{const el=document.createElement('div');el.className='node '+(p.status==='Умерла'?'dead':'');el.style.left=p.x+'px';el.style.top=p.y+'px';el.dataset.id=p.id;const portrait=p.photo?'<img src="'+p.photo+'" alt="">':'<span class="initial">'+p.first[0]+'</span>';el.innerHTML='<div class="leaf"><svg class="ivy" viewBox="0 0 120 150" aria-hidden="true"><path class="ivy-stem" d="M13 133 C2 108 18 88 10 65 C2 42 18 23 35 16 C54 8 75 11 91 25 C108 40 113 61 106 81 C100 101 106 119 92 139" /><g class="ivy-leaves"><path d="M15 112 C2 108 1 95 14 91 C22 99 21 106 15 112Z"/><path d="M12 73 C1 67 3 55 16 54 C21 62 19 69 12 73Z"/><path d="M28 29 C18 19 23 8 36 10 C40 19 36 26 28 29Z"/><path d="M61 13 C59 2 69 -3 78 5 C78 15 71 20 61 13Z"/><path d="M96 39 C102 28 113 31 116 41 C110 49 102 49 96 39Z"/><path d="M105 74 C116 67 123 75 119 86 C109 89 103 84 105 74Z"/><path d="M97 112 C109 108 116 117 109 127 C99 128 94 122 97 112Z"/><path d="M77 139 C77 128 88 124 95 132 C93 143 85 146 77 139Z"/><path d="M37 139 C27 133 29 122 41 120 C48 128 46 136 37 139Z"/></g></svg><div class="avatar">'+portrait+'</div></div><div class="name">'+p.first+'</div><div class="meta">'+p.gen+' поколение'+(p.status==='Умерла'?' · †':'')+'</div>';el.onclick=()=>selectPerson(p,el);nodesEl.appendChild(el)});drawConnections();counter.textContent=new Set(people.map(p=>p.gen)).size+' поколения · '+people.length+' персонажей'}
+function renderPeople(){nodesEl.innerHTML='';lines.innerHTML='';people.forEach((p,i)=>{const el=document.createElement('div');el.className='node '+(p.status==='Умерла'?'dead':'');el.style.left=p.x+'px';el.style.top=p.y+'px';el.dataset.id=p.id;const portrait=p.photo?'<img src="'+p.photo+'" alt="">':'<span class="initial">'+p.first[0]+'</span>';el.innerHTML='<div class="leaf"><svg class="ivy" viewBox="0 0 160 190" aria-hidden="true"><path class="ivy-stem" d="M19 167 C4 145 14 126 24 111 C35 95 27 77 24 61 C20 42 35 22 58 16 C84 9 111 17 128 35 C143 52 146 75 135 94 C124 114 135 135 119 158" /><path class="ivy-tendril" d="M25 111 C45 118 55 130 53 145 M126 91 C109 99 103 113 107 127 M57 17 C63 30 74 36 89 35" /><g class="ivy-leaves"><path d="M20 139 C5 136 2 123 15 117 C25 122 28 131 20 139Z"/><path d="M25 87 C9 82 9 68 23 65 C32 72 32 80 25 87Z"/><path d="M39 34 C25 27 27 14 42 11 C51 20 49 29 39 34Z"/><path d="M69 17 C68 3 81 -2 91 8 C89 19 80 24 69 17Z"/><path d="M111 25 C113 11 126 10 132 21 C127 31 119 34 111 25Z"/><path d="M137 59 C150 53 158 62 153 74 C143 78 136 70 137 59Z"/><path d="M132 108 C146 104 153 114 145 125 C134 126 129 118 132 108Z"/><path d="M116 153 C120 140 133 139 138 150 C132 160 123 162 116 153Z"/><path d="M71 168 C61 158 65 146 78 145 C87 153 84 163 71 168Z"/><path d="M34 151 C21 149 17 137 29 132 C39 137 42 145 34 151Z"/></g></svg><div class="avatar">'+portrait+'</div></div><div class="name">'+p.first+'</div><div class="meta">'+p.gen+' поколение'+(p.status==='Умерла'?' · †':'')+'</div>';el.onclick=()=>selectPerson(p,el);nodesEl.appendChild(el)});drawConnections();counter.textContent=new Set(people.map(p=>p.gen)).size+' поколения · '+people.length+' персонажей'}
 function drawPath(d,soft=false,cls='branch'){const path=document.createElementNS('http://www.w3.org/2000/svg','path');path.setAttribute('d',d);path.setAttribute('class',cls+(soft?' twig':''));lines.appendChild(path)}
-function drawConnections(){if(people.length<2)return;const by=n=>people.find(p=>p.id===n),e=by('evelyn'),a=by('alice'),j=by('james'),em=by('emma'),no=by('noah'),li=by('lily');drawPath('M750 150 C750 205 750 245 750 285');if(e&&a)drawPath('M750 245 C680 270 560 285 480 350');if(e&&j)drawPath('M750 245 C820 270 940 285 1020 350');if(a&&em)drawPath('M480 430 C480 505 480 555 480 625',true);if(a&&no)drawPath('M480 430 C545 500 680 555 750 625',true);if(j&&li)drawPath('M1020 430 C1020 505 1020 555 1020 625',true)}
+function drawConnections(){if(people.length<2)return;const by=n=>people.find(p=>p.id===n),e=by('evelyn'),a=by('alice'),j=by('james'),em=by('emma'),no=by('noah'),li=by('lily');drawPath('M750 845 C742 720 758 620 750 510 C744 420 752 300 750 150');if(e&&a)drawPath('M748 335 C700 305 630 275 560 265 C500 256 445 285 392 335');if(e&&j)drawPath('M752 335 C802 302 870 274 944 263 C1005 255 1060 286 1110 334');if(a&&em)drawPath('M392 398 C370 448 365 500 382 548 C392 575 394 594 393 625',true,'branch thin');if(a&&no)drawPath('M410 395 C500 450 600 500 690 555 C720 573 739 592 750 625',true,'branch thin');if(j&&li)drawPath('M1108 397 C1128 452 1134 501 1118 548 C1108 576 1104 597 1102 625',true,'branch thin');drawPath('M548 265 C510 235 465 216 418 207',true,'branch twig');drawPath('M952 264 C995 235 1040 214 1087 203',true,'branch twig');drawPath('M394 334 C340 310 294 277 254 236',true,'branch twig');drawPath('M1107 334 C1160 310 1205 277 1247 235',true,'branch twig');}
 function selectPerson(p,el){document.querySelectorAll('.node').forEach(n=>n.classList.remove('selected'));el.classList.add('selected');nameEl.textContent=p.first+' '+p.last;genEl.textContent=p.gen+' поколение';infoEl.textContent=p.info;statusEl.innerHTML='<b>Статус:</b> '+p.status;avatarEl.textContent=p.first[0];profile.classList.add('show')}
 function render(){canvas.style.transform=`translate(calc(-50% + ${x}px),calc(-50% + ${y}px)) scale(${scale})`;area.classList.toggle('constellation',mode==='constellation')}
 area.addEventListener('mousedown',e=>{if(e.target.closest('.node')||e.target.closest('.profile'))return;drag=true;sx=e.clientX-x;sy=e.clientY-y;area.classList.add('dragging')});window.addEventListener('mousemove',e=>{if(!drag)return;x=e.clientX-sx;y=e.clientY-sy;render()});window.addEventListener('mouseup',()=>{drag=false;area.classList.remove('dragging')});
