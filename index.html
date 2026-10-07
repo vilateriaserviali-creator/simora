@@ -32,30 +32,30 @@ body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-ser
 .constellation .branch{stroke:#8c765e;stroke-width:2;filter:drop-shadow(0 0 8px #b5965a44)}
 .photo-note{font-size:10px;color:#756c79}
 
-/* SIMORA final botanical composition */
-.tree-area{background:radial-gradient(ellipse at 50% 20%,#f0e2cb 0,#e6d4b5 42%,#d4bc98 100%);box-shadow:0 26px 70px #60472d24,inset 0 1px #f7ead5}
-.tree-area:before{inset:12px;border:1px solid #a78b6870;box-shadow:inset 0 0 100px #74553418}
+/* SIMORA living tree */
+.tree-area{background:radial-gradient(ellipse at 50% 15%,#f0e1c8 0,#e5d2b1 44%,#d2b990 100%);box-shadow:0 28px 75px #60472d25,inset 0 1px #f7ead5}
+.tree-art{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible;filter:drop-shadow(0 14px 13px #5b402a22)}
+.branch{stroke-linecap:round;stroke-linejoin:round}
 .canvas{width:1560px;height:930px}
-.tree-art{filter:drop-shadow(0 15px 12px #60472d1b)}
-.branch{stroke:#704c35;stroke-width:19;fill:none;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 7px 7px #5d432d2b)}
-.branch.thin{stroke:#866347;stroke-width:10}.branch.twig{stroke:#a07e59;stroke-width:5}
-.node{width:180px;z-index:8}
-.leaf{width:160px;height:190px;background:none;border:0;box-shadow:none;transform:none}
-.avatar{width:112px;height:142px;border-radius:58px 58px 50px 50px;border:5px solid #e0c9a3;background:#b69a78;box-shadow:0 13px 28px #503a282f;overflow:hidden;position:relative;z-index:3}
-.avatar:after{content:"";position:absolute;inset:3px;border:1px solid #9b7b52;border-radius:54px 54px 46px 46px;pointer-events:none}
-.avatar img{width:100%;height:100%;object-fit:cover;display:block}.avatar .initial{display:grid;place-items:center;width:100%;height:100%;font-family:Georgia,serif;font-size:34px;color:#604934}
-.ivy{position:absolute;z-index:5;left:0;top:0;width:160px;height:190px;overflow:visible;pointer-events:none}
-.ivy-stem{fill:none;stroke:#506b43;stroke-width:4.2;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 2px 2px #3d302333)}
-.ivy-tendril{fill:none;stroke:#71895b;stroke-width:1.8;stroke-linecap:round;opacity:.9}
-.ivy-leaves path{fill:#748d5d;stroke:#526b43;stroke-width:1;filter:drop-shadow(0 2px 2px #40312430)}
-.ivy-leaves path:nth-child(2n){fill:#91a96f}.ivy-leaves path:nth-child(3n){fill:#607c4d}
-.node.dead .ivy-stem{stroke:#7f765f}.node.dead .ivy-leaves path{fill:#91866b;stroke:#746b55}
-.node:hover .ivy-stem{stroke:#405d36;stroke-width:4.7}.node:hover .ivy-leaves path{filter:drop-shadow(0 3px 4px #40312442)}
-.name{margin-top:-1px;padding:7px 19px 8px;background:linear-gradient(#e6d4b2,#d2b98d);border:1px solid #a7865b;border-radius:6px 6px 11px 11px;box-shadow:0 7px 15px #5a40272a;font-family:Georgia,serif;font-size:14px;color:#49362a}
-.meta{font-size:10px;color:#765f47;margin-top:4px}
-.node.selected .avatar{border-color:#b2935d;box-shadow:0 0 0 4px #b2935d35,0 16px 30px #4d38273b}
-.node.selected .ivy-stem{stroke:#3e5b35}
-.evelyn{left:670px;top:35px}.alice{left:315px;top:285px}.james{left:1005px;top:285px}.emma{left:315px;top:565px}.noah{left:670px;top:565px}.lily{left:1005px;top:565px}
+.node{width:190px;z-index:10}
+.leaf{width:168px;height:194px;position:relative;margin:auto;background:transparent;border:0;box-shadow:none}
+.avatar{position:absolute;left:28px;top:28px;width:112px;height:142px;border-radius:58px 58px 50px 50px;border:5px solid #ddc6a0;background:#b69a78;box-shadow:0 13px 27px #4f39272f;overflow:hidden;z-index:3}
+.avatar img{width:100%;height:100%;object-fit:cover;display:block}
+.avatar .initial{display:grid;place-items:center;width:100%;height:100%;font:34px Georgia,serif;color:#604834}
+.avatar:after{content:"";position:absolute;inset:3px;border:1px solid #987950;border-radius:54px 54px 46px 46px;pointer-events:none}
+.ivy{position:absolute;inset:0;width:168px;height:194px;z-index:5;overflow:visible;pointer-events:none}
+.ivy-stem{fill:none;stroke:#4f6b42;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+.ivy-tendril{fill:none;stroke:#738b5a;stroke-width:1.8;stroke-linecap:round}
+.ivy-leaf-layer{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.ivy-leaf-layer use{fill:#718a59;stroke:#4f6b40;stroke-width:1.1;filter:drop-shadow(0 2px 2px #40312430)}
+.ivy-leaf-layer use:nth-child(2n){fill:#8da56b}
+.ivy-leaf-layer use:nth-child(3n){fill:#607c4c}
+.node.dead .ivy-stem{stroke:#7c765f}.node.dead .ivy-leaf-layer use{fill:#91876d;stroke:#716953}
+.node.selected .avatar{border-color:#b2945e;box-shadow:0 0 0 4px #b2945e35,0 16px 30px #4c37263b}
+.name{position:relative;z-index:8;display:inline-block;margin-top:0;padding:7px 20px 8px;background:linear-gradient(#e6d3b0,#d0b68b);border:1px solid #a58459;border-radius:5px 5px 11px 11px;box-shadow:0 7px 15px #59402728;font:14px Georgia,serif;color:#493629}
+.meta{position:relative;z-index:8;font-size:10px;color:#765e46;margin-top:4px}
+.evelyn{left:655px;top:32px}.alice{left:300px;top:285px}.james{left:1015px;top:285px}.emma{left:300px;top:570px}.noah{left:655px;top:570px}.lily{left:1015px;top:570px}
+.node:hover{filter:brightness(1.035);transform:translateY(-4px)}
 </style>
 </head>
 <body>
@@ -69,30 +69,45 @@ body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-ser
 <div class="canvas" id="canvas">
 <svg class="tree-art" viewBox="0 0 1500 900" aria-hidden="true">
 <defs>
- <linearGradient id="trunk" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#5f432f"/><stop offset=".5" stop-color="#8b6748"/><stop offset="1" stop-color="#60432e"/></linearGradient>
- <filter id="treeShadow"><feGaussianBlur stdDeviation="7"/></filter>
+ <linearGradient id="trunk" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#5a3c28"/><stop offset=".42" stop-color="#876143"/><stop offset=".68" stop-color="#9a7350"/><stop offset="1" stop-color="#5d402b"/></linearGradient>
+ <linearGradient id="bark" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#b18a62"/><stop offset="1" stop-color="#745038"/></linearGradient>
+ <filter id="shadow"><feGaussianBlur stdDeviation="8"/></filter>
+ <path id="ivyLeaf" d="M0 0 C-12 -11 -23 -9 -29 -2 C-20 5 -11 6 -3 3 C-12 13 -11 23 -4 30 C4 22 6 13 3 5 C13 12 24 10 30 2 C21 -5 12 -5 5 -2 C12 -13 9 -23 1 -29 C-6 -20 -6 -10 0 0 Z"/>
 </defs>
-<g opacity=".16" filter="url(#treeShadow)" fill="none" stroke="#5c442f" stroke-linecap="round">
- <path d="M750 875 C735 730 742 590 750 470 C755 360 748 250 750 105" stroke-width="44"/>
- <path d="M748 520 C650 450 555 385 410 330" stroke-width="28"/>
- <path d="M752 515 C850 445 950 380 1090 330" stroke-width="28"/>
+
+<!-- soft silhouette shadow -->
+<g fill="none" stroke="#59402d" stroke-linecap="round" filter="url(#shadow)" opacity=".16">
+ <path d="M750 870 C720 735 733 615 747 505 C760 395 746 280 750 112" stroke-width="58"/>
+ <path d="M748 545 C660 478 560 402 430 347" stroke-width="36"/>
+ <path d="M752 548 C842 480 946 402 1080 346" stroke-width="36"/>
 </g>
+
+<!-- living trunk -->
 <g fill="none" stroke="url(#trunk)" stroke-linecap="round" stroke-linejoin="round">
- <path d="M750 875 C735 730 742 590 750 470 C755 360 748 250 750 105" stroke-width="34"/>
- <path d="M748 545 C660 480 555 405 410 350" stroke-width="21"/>
- <path d="M752 545 C840 480 950 405 1090 350" stroke-width="21"/>
- <path d="M748 670 C670 610 590 555 500 520" stroke-width="14"/>
- <path d="M752 670 C830 610 910 555 1000 520" stroke-width="14"/>
- <path d="M750 395 C685 340 610 300 520 270" stroke-width="11"/>
- <path d="M750 395 C815 340 890 300 980 270" stroke-width="11"/>
+ <path d="M750 875 C720 760 735 660 745 570 C757 470 760 378 750 292 C742 222 748 164 750 112" stroke-width="47"/>
+ <path d="M748 610 C700 555 638 505 555 460 C505 433 455 390 412 345" stroke-width="31"/>
+ <path d="M752 610 C805 552 865 505 945 461 C998 431 1045 390 1090 343" stroke-width="31"/>
+ <path d="M749 462 C695 418 641 375 575 338 C525 309 490 280 462 246" stroke-width="20"/>
+ <path d="M751 463 C806 418 860 375 926 338 C976 309 1010 280 1040 245" stroke-width="20"/>
+ <path d="M742 690 C684 651 625 618 560 600 C510 586 468 558 430 526" stroke-width="16"/>
+ <path d="M758 690 C818 650 875 618 940 600 C992 585 1033 557 1072 525" stroke-width="16"/>
 </g>
-<g fill="none" stroke="#9a7957" stroke-linecap="round">
- <path d="M520 270 C485 240 450 215 415 195" stroke-width="7"/>
- <path d="M980 270 C1015 240 1050 215 1085 195" stroke-width="7"/>
- <path d="M410 350 C365 320 330 295 295 265" stroke-width="7"/>
- <path d="M1090 350 C1135 320 1170 295 1205 265" stroke-width="7"/>
- <path d="M500 520 C455 500 415 475 380 440" stroke-width="6"/>
- <path d="M1000 520 C1045 500 1085 475 1120 440" stroke-width="6"/>
+
+<!-- bark highlights -->
+<g fill="none" stroke="url(#bark)" stroke-linecap="round" opacity=".55">
+ <path d="M730 846 C712 742 727 648 735 564 C746 450 735 330 740 185" stroke-width="6"/>
+ <path d="M722 588 C650 520 570 472 486 414" stroke-width="5"/>
+ <path d="M778 585 C846 520 925 470 1015 415" stroke-width="5"/>
+</g>
+
+<!-- fine young branches -->
+<g fill="none" stroke="#92704f" stroke-linecap="round">
+ <path d="M414 345 C350 315 293 276 245 224" stroke-width="8"/>
+ <path d="M1090 343 C1150 310 1208 275 1255 221" stroke-width="8"/>
+ <path d="M462 246 C423 213 392 184 365 147" stroke-width="6"/>
+ <path d="M1040 245 C1078 212 1110 181 1136 143" stroke-width="6"/>
+ <path d="M430 526 C385 500 342 466 307 422" stroke-width="5"/>
+ <path d="M1072 525 C1118 498 1159 465 1193 420" stroke-width="5"/>
 </g>
 </svg>
 <svg class="lines" viewBox="0 0 1500 900" id="lines"></svg><div id="nodes"></div></div>
@@ -121,7 +136,7 @@ const seed=[
 {id:'lily',first:'Lily',last:'Blackwood',gen:'III',status:'Умерла',info:'Дочь James · Умерла в 2024 · Память рода',x:945,y:625}
 ];
 let custom=JSON.parse(localStorage.getItem('simora-custom')||'[]');let people=[...seed,...custom];
-function renderPeople(){nodesEl.innerHTML='';lines.innerHTML='';people.forEach((p,i)=>{const el=document.createElement('div');el.className='node '+(p.status==='Умерла'?'dead':'');el.style.left=p.x+'px';el.style.top=p.y+'px';el.dataset.id=p.id;const portrait=p.photo?'<img src="'+p.photo+'" alt="">':'<span class="initial">'+p.first[0]+'</span>';el.innerHTML='<div class="leaf"><svg class="ivy" viewBox="0 0 160 190" aria-hidden="true"><path class="ivy-stem" d="M19 167 C4 145 14 126 24 111 C35 95 27 77 24 61 C20 42 35 22 58 16 C84 9 111 17 128 35 C143 52 146 75 135 94 C124 114 135 135 119 158" /><path class="ivy-tendril" d="M25 111 C45 118 55 130 53 145 M126 91 C109 99 103 113 107 127 M57 17 C63 30 74 36 89 35" /><g class="ivy-leaves"><path d="M20 139 C5 136 2 123 15 117 C25 122 28 131 20 139Z"/><path d="M25 87 C9 82 9 68 23 65 C32 72 32 80 25 87Z"/><path d="M39 34 C25 27 27 14 42 11 C51 20 49 29 39 34Z"/><path d="M69 17 C68 3 81 -2 91 8 C89 19 80 24 69 17Z"/><path d="M111 25 C113 11 126 10 132 21 C127 31 119 34 111 25Z"/><path d="M137 59 C150 53 158 62 153 74 C143 78 136 70 137 59Z"/><path d="M132 108 C146 104 153 114 145 125 C134 126 129 118 132 108Z"/><path d="M116 153 C120 140 133 139 138 150 C132 160 123 162 116 153Z"/><path d="M71 168 C61 158 65 146 78 145 C87 153 84 163 71 168Z"/><path d="M34 151 C21 149 17 137 29 132 C39 137 42 145 34 151Z"/></g></svg><div class="avatar">'+portrait+'</div></div><div class="name">'+p.first+'</div><div class="meta">'+p.gen+' поколение'+(p.status==='Умерла'?' · †':'')+'</div>';el.onclick=()=>selectPerson(p,el);nodesEl.appendChild(el)});drawConnections();counter.textContent=new Set(people.map(p=>p.gen)).size+' поколения · '+people.length+' персонажей'}
+function renderPeople(){nodesEl.innerHTML='';lines.innerHTML='';people.forEach((p,i)=>{const el=document.createElement('div');el.className='node '+(p.status==='Умерла'?'dead':'');el.style.left=p.x+'px';el.style.top=p.y+'px';el.dataset.id=p.id;const portrait=p.photo?'<img src="'+p.photo+'" alt="">':'<span class="initial">'+p.first[0]+'</span>';el.innerHTML='<div class="leaf"><svg class="ivy" viewBox="0 0 160 190" aria-hidden="true"><path class="ivy-stem" d="M18 169 C5 148 15 127 27 110 C39 93 28 76 25 59 C22 40 37 22 58 16 C84 9 112 17 128 35 C143 52 146 76 135 96 C124 116 135 137 119 160"/><path class="ivy-tendril" d="M27 110 C46 119 56 131 53 146 M126 94 C108 101 103 114 107 129 M58 16 C63 30 74 36 89 35"/></svg><svg class="ivy-leaf-layer" viewBox="0 0 160 190" aria-hidden="true"><use href="#ivyLeaf" transform="translate(24 139) scale(.62) rotate(-24)"/><use href="#ivyLeaf" transform="translate(25 86) scale(.55) rotate(-10)"/><use href="#ivyLeaf" transform="translate(40 34) scale(.65) rotate(-28)"/><use href="#ivyLeaf" transform="translate(70 18) scale(.58) rotate(18)"/><use href="#ivyLeaf" transform="translate(113 27) scale(.62) rotate(35)"/><use href="#ivyLeaf" transform="translate(137 61) scale(.55) rotate(62)"/><use href="#ivyLeaf" transform="translate(133 109) scale(.62) rotate(84)"/><use href="#ivyLeaf" transform="translate(117 153) scale(.56) rotate(112)"/><use href="#ivyLeaf" transform="translate(72 167) scale(.62) rotate(150)"/><use href="#ivyLeaf" transform="translate(35 151) scale(.52) rotate(-55)"/></svg><div class="avatar">'+portrait+'</div></div><div class="name">'+p.first+'</div><div class="meta">'+p.gen+' поколение'+(p.status==='Умерла'?' · †':'')+'</div>';el.onclick=()=>selectPerson(p,el);nodesEl.appendChild(el)});drawConnections();counter.textContent=new Set(people.map(p=>p.gen)).size+' поколения · '+people.length+' персонажей'}
 function drawPath(d,soft=false,cls='branch'){const path=document.createElementNS('http://www.w3.org/2000/svg','path');path.setAttribute('d',d);path.setAttribute('class',cls+(soft?' twig':''));lines.appendChild(path)}
 function drawConnections(){if(people.length<2)return;const by=n=>people.find(p=>p.id===n),e=by('evelyn'),a=by('alice'),j=by('james'),em=by('emma'),no=by('noah'),li=by('lily');drawPath('M750 845 C742 720 758 620 750 510 C744 420 752 300 750 150');if(e&&a)drawPath('M748 335 C700 305 630 275 560 265 C500 256 445 285 392 335');if(e&&j)drawPath('M752 335 C802 302 870 274 944 263 C1005 255 1060 286 1110 334');if(a&&em)drawPath('M392 398 C370 448 365 500 382 548 C392 575 394 594 393 625',true,'branch thin');if(a&&no)drawPath('M410 395 C500 450 600 500 690 555 C720 573 739 592 750 625',true,'branch thin');if(j&&li)drawPath('M1108 397 C1128 452 1134 501 1118 548 C1108 576 1104 597 1102 625',true,'branch thin');drawPath('M548 265 C510 235 465 216 418 207',true,'branch twig');drawPath('M952 264 C995 235 1040 214 1087 203',true,'branch twig');drawPath('M394 334 C340 310 294 277 254 236',true,'branch twig');drawPath('M1107 334 C1160 310 1205 277 1247 235',true,'branch twig');}
 function selectPerson(p,el){document.querySelectorAll('.node').forEach(n=>n.classList.remove('selected'));el.classList.add('selected');nameEl.textContent=p.first+' '+p.last;genEl.textContent=p.gen+' поколение';infoEl.textContent=p.info;statusEl.innerHTML='<b>Статус:</b> '+p.status;avatarEl.textContent=p.first[0];profile.classList.add('show')}
