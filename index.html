@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SIMORA — Древо династии</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #17151a;
+            color: #f5f1f5;
+            min-height: 100vh;
+        }
+
+        .app {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Левое меню */
+
+        .sidebar {
+            width: 240px;
+            background: #201d24;
+            border-right: 1px solid #343039;
+            padding: 28px 20px;
+        }
+
+        .logo {
+            font-size: 27px;
+            font-weight: 700;
+            letter-spacing: 4px;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            color: #918b96;
+            font-size: 13px;
+            margin-bottom: 45px;
+        }
+
+        .menu {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .menu button {
+            width: 100%;
+            border: 0;
+            background: transparent;
+            color: #aaa4af;
+            padding: 13px 14px;
+            border-radius: 10px;
+            text-align: left;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        .menu button:hover {
+            background: #2b2730;
+            color: white;
+        }
+
+        .menu button.active {
+            background: #332e38;
+            color: white;
+        }
+
+        /* Основная область */
+
+        .main {
+            flex: 1;
+            padding: 28px 34px;
+        }
+
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 28px;
+        }
+
+        .title {
+            font-size: 25px;
+            font-weight: 600;
+        }
+
+        .view-switch {
+            display: flex;
+            gap: 6px;
+            background: #211e25;
+            padding: 5px;
+            border: 1px solid #343039;
+            border-radius: 12px;
+        }
+
+        .view-switch button {
+            border: 0;
+            background: transparent;
+            color: #aaa4af;
+            padding: 9px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .view-switch button.active {
+            background: #37313d;
+            color: white;
+        }
+
+        /* Область дерева */
+
+        .tree-area {
+            height: calc(100vh - 120px);
+            min-height: 600px;
+            background:
+                radial-gradient(circle at center, #28232d 0%, #1b181e 55%, #17151a 100%);
+            border: 1px solid #343039;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tree-title {
+            position: absolute;
+            top: 25px;
+            left: 28px;
+        }
+
+        .tree-title h2 {
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        .tree-title p {
+            color: #817b86;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+        /* Пока тестовые персонажи */
+
+        .person {
+            position: absolute;
+            width: 130px;
+            padding: 14px;
+            background: #29252d;
+            border: 1px solid #403945;
+            border-radius: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .person:hover {
+            transform: translateY(-4px);
+            border-color: #75677e;
+        }
+
+        .avatar {
+            width: 58px;
+            height: 58px;
+            margin: 0 auto 9px;
+            border-radius: 50%;
+            background: #403945;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 27px;
+        }
+
+        .person-name {
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .generation {
+            color: #847d89;
+            font-size: 10px;
+            margin-top: 4px;
+        }
+
+        /* Расстановка */
+
+        .person.one {
+            top: 150px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .person.two {
+            top: 330px;
+            left: 35%;
+        }
+
+        .person.three {
+            top: 330px;
+            left: 60%;
+        }
+
+        .person.four {
+            top: 510px;
+            left: 48%;
+        }
+
+        /* Линии */
+
+        .line {
+            position: absolute;
+            background: #625967;
+        }
+
+        .line.vertical-one {
+            width: 2px;
+            height: 55px;
+            top: 275px;
+            left: 50%;
+        }
+
+        .line.horizontal {
+            height: 2px;
+            width: 25%;
+            top: 330px;
+            left: 37.5%;
+        }
+
+        .line.vertical-two {
+            width: 2px;
+            height: 55px;
+            top: 450px;
+            left: 53%;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="app">
+
+    <aside class="sidebar">
+
+        <div class="logo">SIMORA</div>
+        <div class="subtitle">Древо династии</div>
+
+        <nav class="menu">
+            <button class="active">🌳 Дерево</button>
+            <button>⭐ Созвездие</button>
+            <button>📖 Хроника</button>
+            <button>🏆 Достижения</button>
+        </nav>
+
+    </aside>
+
+
+    <main class="main">
+
+        <div class="topbar">
+
+            <div class="title">
+                Blackwood Legacy
+            </div>
+
+            <div class="view-switch">
+                <button class="active">🌳 Дерево</button>
+                <button>⭐ Созвездие</button>
+            </div>
+
+        </div>
+
+
+        <section class="tree-area">
+
+            <div class="tree-title">
+                <h2>Blackwood</h2>
+                <p>4 поколения · 4 персонажа</p>
+            </div>
+
+
+            <!-- Линии -->
+
+            <div class="line vertical-one"></div>
+            <div class="line horizontal"></div>
+            <div class="line vertical-two"></div>
+
+
+            <!-- Персонажи -->
+
+            <div class="person one">
+
+                <div class="avatar">👩</div>
+
+                <div class="person-name">
+                    Evelyn
+                </div>
+
+                <div class="generation">
+                    I поколение
+                </div>
+
+            </div>
+
+
+            <div class="person two">
+
+                <div class="avatar">👩</div>
+
+                <div class="person-name">
+                    Alice
+                </div>
+
+                <div class="generation">
+                    II поколение
+                </div>
+
+            </div>
+
+
+            <div class="person three">
+
+                <div class="avatar">👨</div>
+
+                <div class="person-name">
+                    James
+                </div>
+
+                <div class="generation">
+                    II поколение
+                </div>
+
+            </div>
+
+
+            <div class="person four">
+
+                <div class="avatar">👧</div>
+
+                <div class="person-name">
+                    Emma
+                </div>
+
+                <div class="generation">
+                    III поколение
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+</body>
+</html>
