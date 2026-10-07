@@ -31,6 +31,58 @@ body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-ser
 .node.selected .leaf{box-shadow:0 0 0 3px #b5965a66,0 16px 40px #765f4335}
 .constellation .branch{stroke:#8c765e;stroke-width:2;filter:drop-shadow(0 0 8px #b5965a44)}
 .photo-note{font-size:10px;color:#756c79}
+
+/* SIMORA visual polish */
+:root{--ink:#49372b;--ink-soft:#705d49;--cream:#eadcc5;--cream-deep:#d4bea0;--sage:#899777;--sage-deep:#68785b;--wood:#795b43;--wood-light:#a07e5e;--blush:#b98b82;--gold:#b3955b}
+body{background:radial-gradient(ellipse at 50% 0%,#f0e1c9 0%,#e6d5b9 43%,#d3bea0 100%)}
+.app:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.22;background-image:radial-gradient(#8c7458 0.6px,transparent .6px);background-size:18px 18px;mask-image:linear-gradient(to bottom,#000,transparent 80%)}
+.sidebar{position:relative;background:linear-gradient(165deg,#d9c6a8 0%,#cdb895 55%,#c4ad88 100%);border-right:1px solid #af9674;box-shadow:14px 0 45px #6d543918}
+.sidebar:after{content:"✦";position:absolute;bottom:28px;left:30px;color:#a58b62;font-size:28px;opacity:.5}
+.logo{font-family:Georgia,serif;font-size:29px;letter-spacing:6px;color:#4d392b}
+.subtitle{letter-spacing:.8px;color:#806c55}
+.menu{margin-top:4px}
+.menu button{position:relative;color:#695642;padding:14px 15px;border-radius:14px;transition:transform .2s,background .2s,box-shadow .2s}
+.menu button:hover{transform:translateX(3px);background:#c1ae8f;color:#49372b}
+.menu button.active{background:linear-gradient(100deg,#ad9b7c,#bba987);color:#3f3024;box-shadow:0 8px 20px #6f573d1f}
+.main{padding:27px 30px}
+.topbar{margin-bottom:19px}
+.title{font-family:Georgia,serif;color:#49372b;font-size:27px;letter-spacing:-.4px}
+.topbar:after{content:"";position:absolute}
+.actions{align-items:center}
+.action{background:#dfceb2;border-color:#b59c79}
+.action.primary{background:linear-gradient(135deg,#806149,#9a7658);border-color:#76563e;box-shadow:0 8px 20px #60472d2d}
+.switch{background:#cfbda1;border-color:#ae9472;box-shadow:inset 0 1px #eadcc6}
+.switch button.active{background:#8b7a60;box-shadow:0 4px 12px #60472d20}
+.tree-area{border:1px solid #b69d79;background:radial-gradient(circle at 50% 40%,#f0e2cc 0%,#e5d4b8 48%,#d4bea0 100%);box-shadow:0 25px 65px #71573b24,inset 0 1px #f4e7d3}
+.tree-area:before{content:"";position:absolute;inset:14px;border:1px solid #bba48655;border-radius:17px;pointer-events:none}
+.tree-title{top:27px;left:30px}
+.tree-title h2{font-size:21px;color:#4b382b;letter-spacing:.2px}
+.tree-title p{color:#806c56}
+.hint{color:#8c765e;background:#dfcfb7aa;padding:7px 11px;border-radius:20px;border:1px solid #c4aa8555}
+.branch{stroke:#76543b;stroke-width:15;filter:drop-shadow(0 9px 9px #60472d26)}
+.branch.thin{stroke:#8d6c4e;stroke-width:8}.branch.twig{stroke:#a18463;stroke-width:4}
+.leaf{background:linear-gradient(145deg,#b9c19d,#929f79);border:3px solid #71805f;box-shadow:0 13px 30px #5e493126, inset 0 2px #d9dec0}
+.leaf:after{background:#7d8b68}
+.avatar{background:linear-gradient(145deg,#d0b99b,#9f8064);border-color:#f0dfc5;color:#574332;box-shadow:0 6px 16px #60472d24}
+.name{color:#49372b;font-size:15px}
+.meta{color:#806c56}
+.node:hover{filter:brightness(1.04);transform:translateY(-3px)}
+.node.selected .leaf{box-shadow:0 0 0 3px #b3955b88,0 17px 38px #60472d38}
+.profile{background:#e4d4bbf2;border-color:#b69d7b;box-shadow:0 24px 55px #624a302c}
+.profile h3{font-family:Georgia,serif;color:#4a382c}
+.profile .small{color:#806c56}
+.profile .big{background:linear-gradient(145deg,#b7c09b,#899675);border-color:#788667;color:#49372b}
+.stat{background:#d3c0a4;color:#6d5945;border:1px solid #bba17f55}
+.stat b{color:#49372b}
+.starfield{opacity:.12}
+.constellation .leaf{background:#9da98b;border-color:#728064;box-shadow:0 0 25px #73845b45}
+.dialog{background:linear-gradient(145deg,#e7d8bf,#d9c5a4);box-shadow:0 30px 90px #624a3040}
+.dialog h2{font-family:Georgia,serif;color:#49372b}
+.dialog p,.field label{color:#806c56}
+.field input,.field select{background:#d5c1a4;border-color:#ae9473;color:#4b382b}
+.empty-add{background:#d2bea0;color:#4b382b;border-color:#a98d69}
+.photo-note{color:#8a745d}
+@media (max-width:1200px){.sidebar{width:210px}.main{padding:22px}.actions{gap:6px}.action{padding:9px 11px}.switch button{padding:8px 11px}}
 </style>
 </head>
 <body>
