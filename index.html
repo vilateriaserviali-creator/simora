@@ -74,7 +74,7 @@ body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-ser
 .tree-area:not(.constellation) #nodes .ivy-leaf-layer use:nth-child(2n){fill:#78945b}
 .tree-area:not(.constellation) #nodes .ivy-leaf-layer use:nth-child(3n){fill:#46643a}
 .tree-area:not(.constellation) #nodes .node.dead .avatar{filter:grayscale(.75);opacity:.72}
-</style>
+<style id="simora-motion">.tree-area:not(.constellation){perspective:1400px}.tree-area:not(.constellation) .tree-scene{position:absolute;left:50%;top:50%;width:1500px;height:900px;transform-style:preserve-3d;transform:translate(-50%,-50%);animation:smFloat 14s ease-in-out infinite}.tree-area:not(.constellation) .tree-scene .tree-art{animation:smSway 10s ease-in-out infinite;transform-origin:750px 780px}.tree-area:not(.constellation) .crown{animation:smCrown 8s ease-in-out infinite;transform-origin:750px 250px}.tree-area:not(.constellation) .ivy-system,.tree-area:not(.constellation) .ivy-leaves{animation:smIvy 6s ease-in-out infinite}.tree-area:not(.constellation) .tree-atmosphere{position:absolute;inset:0;z-index:2;pointer-events:none;background:radial-gradient(circle at 50% 20%,#d5df9b20,transparent 35%),radial-gradient(circle at 20% 60%,#9aaf7618,transparent 35%);animation:smLight 18s ease-in-out infinite alternate}.tree-area:not(.constellation) .tree-vignette{position:absolute;inset:0;z-index:6;pointer-events:none;background:radial-gradient(ellipse,transparent 40%,#050a0870 100%)}@keyframes smFloat{0%,100%{transform:translate(-50%,-50%) rotateY(-.7deg)}50%{transform:translate(-50%,-50%) rotateY(.7deg) translateY(-4px)}}@keyframes smSway{0%,100%{transform:rotate(-.25deg)}50%{transform:rotate(.35deg) translate(3px,-2px)}}@keyframes smCrown{0%,100%{transform:rotate(-.45deg)}50%{transform:rotate(.65deg) translateX(7px)}}@keyframes smIvy{0%,100%{transform:rotate(-.5deg)}50%{transform:rotate(.65deg) translateX(2px)}}@keyframes smLight{from{transform:translate(-4%,-2%)}to{transform:translate(5%,4%)}} </style></style>
 </head>
 <body>
 <div class="app">
@@ -83,8 +83,8 @@ body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-ser
 </nav></aside>
 <main class="main">
 <div class="topbar"><div class="title">Blackwood Legacy</div><div class="actions"><button class="action primary" id="addBtn">＋ Добавить сима</button><div class="switch"><button class="active" data-view="tree">🌳 Дерево</button><button data-view="constellation">✦ Созвездие</button></div></div></div>
-<section class="tree-area" id="area"><div class="starfield"></div><div class="tree-title"><h2>Blackwood</h2><p id="counter">3 поколения · 6 персонажей</p></div>
-<div class="canvas" id="canvas">
+<section class="tree-area" id="area"><div class="starfield"></div><div class="tree-atmosphere"></div><div class="tree-vignette"></div><div class="tree-title"><h2>Blackwood</h2><p id="counter">3 поколения · 6 персонажей</p></div>
+<div class="canvas" id="canvas"><div class="tree-scene">
 <svg class="tree-art" viewBox="0 0 1500 900" aria-hidden="true">
 <defs>
  <linearGradient id="trunkGrad" x1="0" x2="1"><stop stop-color="#241711"/><stop offset=".18" stop-color="#4b3020"/><stop offset=".38" stop-color="#795238"/><stop offset=".55" stop-color="#5a3927"/><stop offset=".78" stop-color="#39241a"/><stop offset="1" stop-color="#21140f"/></linearGradient>
@@ -172,7 +172,7 @@ body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-ser
  <use href="#leaf" x="1240" y="249" width="62" height="62"/>
 </g>
 </svg>
-<svg class="lines" viewBox="0 0 1500 900" id="lines"></svg><div id="nodes"></div></div>
+<svg class="lines" viewBox="0 0 1500 900" id="lines"></svg><div id="nodes"></div></div></div>
 <div class="profile" id="profile"><div class="big" id="profileAvatar">A</div><h3 id="profileName">Alice Blackwood</h3><div class="small" id="profileGen">II поколение</div><div class="stats"><div class="stat" id="profileInfo"></div><div class="stat" id="profileStatus"></div><div class="stat"><b>Ветка:</b> Blackwood</div></div></div>
 <div class="hint">Перетаскивай дерево мышью · Колесо — масштаб</div></section>
 </main></div>
