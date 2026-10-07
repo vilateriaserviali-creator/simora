@@ -32,78 +32,48 @@ body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-ser
 .constellation .branch{stroke:#8c765e;stroke-width:2;filter:drop-shadow(0 0 8px #b5965a44)}
 .photo-note{font-size:10px;color:#756c79}
 
-/* SIMORA visual polish */
-/* living ivy portrait system */
-.leaf{position:relative;width:126px;height:156px;margin:auto;background:transparent;border:0;border-radius:0;box-shadow:none;display:flex;align-items:center;justify-content:center;transform:none}
-.leaf:after{display:none}
-.avatar{position:relative;z-index:3;width:104px;height:132px;border-radius:52px 52px 45px 45px;background:#c4ae91;border:4px solid #d8c39f;box-shadow:0 10px 24px #60472d35;overflow:hidden}
-.avatar:after{content:"";position:absolute;inset:3px;border:1px solid #8f7657;border-radius:48px 48px 42px 42px;pointer-events:none;opacity:.65}
-.avatar img{width:100%;height:100%;object-fit:cover;display:block}
-.avatar .initial{display:grid;place-items:center;width:100%;height:100%;font-family:Georgia,serif;font-size:30px;color:#66503b}
-.ivy{position:absolute;z-index:4;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
-.ivy-stem{fill:none;stroke:#5f754f;stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 2px 2px #4e392633)}
-.ivy-leaves path{fill:#788d62;stroke:#5d714d;stroke-width:1.2;filter:drop-shadow(0 2px 2px #4d38242a)}
-.ivy-leaves path:nth-child(2n){fill:#91a477}
-.ivy-leaves path:nth-child(3n){fill:#687e56}
-.node:hover .ivy-stem{stroke:#536b46}
-.node:hover .ivy-leaves path{filter:drop-shadow(0 3px 4px #4d38243d)}
-.node.dead .ivy-stem{stroke:#7d7864;opacity:.7}
-.node.dead .ivy-leaves path{fill:#93896d;stroke:#776f5a;opacity:.65}
-.name{position:relative;z-index:6;display:inline-block;margin-top:2px;padding:6px 16px 7px;border-radius:5px 5px 10px 10px;background:#dfcbaa;border:1px solid #b49368;box-shadow:0 5px 13px #60472d22;font-family:Georgia,serif;font-size:14px;color:#4d392a}
-.meta{position:relative;z-index:6;margin-top:4px;color:#7d684f}
-.evelyn{left:675px;top:40px}.alice{left:330px;top:285px}.james{left:995px;top:285px}.emma{left:325px;top:555px}.noah{left:675px;top:555px}.lily{left:1000px;top:555px}
-
-:root{--ink:#49372b;--ink-soft:#705d49;--cream:#eadcc5;--cream-deep:#d4bea0;--sage:#899777;--sage-deep:#68785b;--wood:#795b43;--wood-light:#a07e5e;--blush:#b98b82;--gold:#b3955b}
-body{background:radial-gradient(ellipse at 50% 0%,#f0e1c9 0%,#e6d5b9 43%,#d3bea0 100%)}
-.app:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.22;background-image:radial-gradient(#8c7458 0.6px,transparent .6px);background-size:18px 18px;mask-image:linear-gradient(to bottom,#000,transparent 80%)}
-.sidebar{position:relative;background:linear-gradient(165deg,#d9c6a8 0%,#cdb895 55%,#c4ad88 100%);border-right:1px solid #af9674;box-shadow:14px 0 45px #6d543918}
-.sidebar:after{content:"✦";position:absolute;bottom:28px;left:30px;color:#a58b62;font-size:28px;opacity:.5}
-.logo{font-family:Georgia,serif;font-size:29px;letter-spacing:6px;color:#4d392b}
-.subtitle{letter-spacing:.8px;color:#806c55}
-.menu{margin-top:4px}
-.menu button{position:relative;color:#695642;padding:14px 15px;border-radius:14px;transition:transform .2s,background .2s,box-shadow .2s}
-.menu button:hover{transform:translateX(3px);background:#c1ae8f;color:#49372b}
-.menu button.active{background:linear-gradient(100deg,#ad9b7c,#bba987);color:#3f3024;box-shadow:0 8px 20px #6f573d1f}
-.main{padding:27px 30px}
-.topbar{margin-bottom:19px}
-.title{font-family:Georgia,serif;color:#49372b;font-size:27px;letter-spacing:-.4px}
-.topbar:after{content:"";position:absolute}
-.actions{align-items:center}
-.action{background:#dfceb2;border-color:#b59c79}
-.action.primary{background:linear-gradient(135deg,#806149,#9a7658);border-color:#76563e;box-shadow:0 8px 20px #60472d2d}
-.switch{background:#cfbda1;border-color:#ae9472;box-shadow:inset 0 1px #eadcc6}
-.switch button.active{background:#8b7a60;box-shadow:0 4px 12px #60472d20}
-.tree-area{border:1px solid #b69d79;background:radial-gradient(circle at 50% 40%,#f0e2cc 0%,#e5d4b8 48%,#d4bea0 100%);box-shadow:0 25px 65px #71573b24,inset 0 1px #f4e7d3}
-.tree-area:after{content:"✦  •  ✦  •  ✦";position:absolute;top:86px;left:50%;transform:translateX(-50%);color:#a28a63;font-size:11px;letter-spacing:18px;opacity:.45;pointer-events:none}
-.tree-area:before{content:"";position:absolute;inset:14px;border:1px solid #bba48655;border-radius:17px;pointer-events:none}
-.tree-title{top:27px;left:30px}
-.tree-title h2{font-size:21px;color:#4b382b;letter-spacing:.2px}
-.tree-title p{color:#806c56}
-.hint{color:#8c765e;background:#dfcfb7aa;padding:7px 11px;border-radius:20px;border:1px solid #c4aa8555}
-.branch{stroke:#76543b;stroke-width:15;filter:drop-shadow(0 9px 9px #60472d26)}
-.branch.thin{stroke:#8d6c4e;stroke-width:8}.branch.twig{stroke:#a18463;stroke-width:4}
-.leaf{background:linear-gradient(145deg,#b9c19d,#929f79);border:3px solid #71805f;box-shadow:0 13px 30px #5e493126, inset 0 2px #d9dec0}
-.leaf:after{background:#788866;box-shadow:2px 2px 0 #6e7d5d}
-.avatar{background:linear-gradient(145deg,#d0b99b,#9f8064);border-color:#f0dfc5;color:#574332;box-shadow:0 6px 16px #60472d24}
-.name{color:#49372b;font-size:15px}
-.meta{color:#806c56}
-.node:hover{filter:brightness(1.04);transform:translateY(-3px)}
-.node.selected .leaf{box-shadow:0 0 0 3px #b3955b88,0 17px 38px #60472d38}
-.profile{background:#e4d4bbf2;border-color:#b69d7b;box-shadow:0 24px 55px #624a302c}
-.profile h3{font-family:Georgia,serif;color:#4a382c}
-.profile .small{color:#806c56}
-.profile .big{background:linear-gradient(145deg,#b7c09b,#899675);border-color:#788667;color:#49372b}
-.stat{background:#d3c0a4;color:#6d5945;border:1px solid #bba17f55}
-.stat b{color:#49372b}
-.starfield{opacity:.12}
-.constellation .leaf{background:#9da98b;border-color:#728064;box-shadow:0 0 25px #73845b45}
-.dialog{background:linear-gradient(145deg,#e7d8bf,#d9c5a4);box-shadow:0 30px 90px #624a3040}
-.dialog h2{font-family:Georgia,serif;color:#49372b}
-.dialog p,.field label{color:#806c56}
-.field input,.field select{background:#d5c1a4;border-color:#ae9473;color:#4b382b}
-.empty-add{background:#d2bea0;color:#4b382b;border-color:#a98d69}
-.photo-note{color:#8a745d}
-@media (max-width:1200px){.sidebar{width:210px}.main{padding:22px}.actions{gap:6px}.action{padding:9px 11px}.switch button{padding:8px 11px}}
+/* SIMORA botanical art direction */
+.tree-area{background:
+ radial-gradient(ellipse at 50% 18%,#f1e4cf 0%,transparent 38%),
+ radial-gradient(ellipse at 20% 72%,#c6b28f55 0%,transparent 30%),
+ radial-gradient(ellipse at 82% 65%,#b6a27e44 0%,transparent 34%),
+ linear-gradient(135deg,#e5d3b4,#d8c19f 55%,#cbb38e 100%);
+}
+.tree-area:before{inset:12px;border:1px solid #a98d6870;box-shadow:inset 0 0 80px #765a3820}
+.tree-title{top:25px;left:28px}
+.tree-title h2{font-family:Georgia,serif;font-size:23px;letter-spacing:.2px;color:#4a3628}
+.tree-title p{font-size:11px;letter-spacing:.5px;color:#80674e}
+.canvas{width:1560px;height:930px}
+.tree-art{filter:drop-shadow(0 12px 12px #60472d1b)}
+.node{width:180px;transition:transform .25s ease,filter .25s ease}
+.node:hover{transform:translateY(-5px) scale(1.015);filter:brightness(1.03)}
+.leaf{width:150px;height:184px}
+.avatar{width:108px;height:138px;border-radius:55px 55px 48px 48px;border:5px solid #dfcba7;background:#ad9577;box-shadow:0 12px 26px #503a282e}
+.avatar:before{content:"";position:absolute;inset:-9px;border:1px solid #aa895d;border-radius:60px 60px 54px 54px;z-index:-1}
+.ivy{inset:-10px;width:170px;height:204px}
+.ivy-stem{stroke:#506c45;stroke-width:3.8;filter:drop-shadow(0 2px 1px #3e302244)}
+.ivy-leaves path{fill:#70895a;stroke:#536e46;stroke-width:1;filter:drop-shadow(0 2px 2px #40312438)}
+.ivy-leaves path:nth-child(2n){fill:#8da56e}
+.ivy-leaves path:nth-child(3n){fill:#5f7a4d}
+.name{margin-top:0;padding:7px 20px 8px;background:linear-gradient(180deg,#e6d4b2,#d3bb91);border:1px solid #a8865d;border-radius:6px 6px 12px 12px;box-shadow:0 6px 15px #5b402827;font-size:14px;min-width:100px}
+.name:before{content:"";position:absolute;left:50%;top:-4px;width:7px;height:7px;transform:translateX(-50%) rotate(45deg);background:#c5a777;border-left:1px solid #9d7c54;border-top:1px solid #9d7c54}
+.meta{font-size:10px;color:#776047;letter-spacing:.2px}
+.node.dead .avatar{filter:grayscale(.7);opacity:.8}
+.node.dead .ivy-leaves path{fill:#8f866c;stroke:#756b55}
+.node.selected .avatar{border-color:#b4955f;box-shadow:0 0 0 4px #b4955f35,0 15px 30px #4d39283b}
+.node.selected .ivy-stem{stroke:#45613b;stroke-width:4.3}
+.profile{background:#e4d3b8f5;border:1px solid #aa8b63;box-shadow:0 25px 60px #58412b35}
+.profile .big{border-color:#a48761}
+.action{background:#dfc9a7;border-color:#ad8e66}
+.action.primary{background:linear-gradient(135deg,#76563f,#947052);border-color:#6d4d38}
+.switch{background:#cfb795;border-color:#a98a62}
+.switch button.active{background:#806b51}
+.sidebar{background:linear-gradient(180deg,#d3bea0,#c2aa86);border-color:#a98e6b}
+.sidebar:before{content:"";position:absolute;right:-1px;top:0;bottom:0;width:1px;background:#ead9bd80}
+.logo{font-size:30px;color:#4b3628}
+.menu button.active{background:linear-gradient(100deg,#b39b78,#c3aa83);box-shadow:0 8px 24px #624a3020}
+.hint{background:#d6c09fdd;color:#705a42;border-color:#ad906c}
+@media (max-width:1200px){.canvas{width:1450px}}
 </style>
 </head>
 <body>
