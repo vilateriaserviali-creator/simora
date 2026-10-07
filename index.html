@@ -1,89 +1,77 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SIMORA — Древо династии</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-:root{
- --bg:#121116;--panel:#1b1920;--panel2:#211e27;--line:#403947;
- --text:#f2edf3;--muted:#918995;--accent:#bca9c7;--accent2:#7f6c89;
-}
+:root{--bg:#121116;--panel:#1b1920;--panel2:#211e27;--line:#51475a;--text:#f2edf3;--muted:#918995;--accent:#c9b3d1}
 body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);min-width:1100px;overflow:hidden}
-.app{height:100vh;display:flex}
-.sidebar{width:238px;flex:none;background:linear-gradient(180deg,#1b1920,#17151b);border-right:1px solid #302c35;padding:30px 18px}
+.app{height:100vh;display:flex}.sidebar{width:238px;flex:none;background:linear-gradient(180deg,#1b1920,#17151b);border-right:1px solid #302c35;padding:30px 18px}
 .logo{font-size:27px;font-weight:750;letter-spacing:5px}.subtitle{font-size:12px;color:var(--muted);margin-top:7px;margin-bottom:44px}
 .menu{display:grid;gap:7px}.menu button{border:0;background:transparent;color:#aaa2ad;padding:13px 14px;border-radius:11px;text-align:left;font-size:14px;cursor:pointer}.menu button:hover,.menu button.active{background:#2b2730;color:#fff}
-.main{min-width:0;flex:1;padding:25px 28px}
-.topbar{height:55px;display:flex;align-items:center;justify-content:space-between;margin-bottom:17px}.title{font-size:24px;font-weight:650}.switch{display:flex;padding:4px;background:#1b1920;border:1px solid #332f38;border-radius:12px;gap:4px}.switch button{border:0;background:transparent;color:#9c94a0;padding:9px 15px;border-radius:8px;cursor:pointer}.switch button.active{background:#37313d;color:#fff}
+.main{min-width:0;flex:1;padding:25px 28px}.topbar{height:55px;display:flex;align-items:center;justify-content:space-between;margin-bottom:17px}.title{font-size:24px;font-weight:650}
+.actions{display:flex;gap:9px}.action{border:1px solid #3a3440;background:#211e27;color:#ddd5e0;border-radius:11px;padding:10px 14px;cursor:pointer}.action.primary{background:#776481;border-color:#8e7899;color:#fff}.action:hover{filter:brightness(1.12)}
+.switch{display:flex;padding:4px;background:#1b1920;border:1px solid #332f38;border-radius:12px;gap:4px}.switch button{border:0;background:transparent;color:#9c94a0;padding:9px 15px;border-radius:8px;cursor:pointer}.switch button.active{background:#37313d;color:#fff}
 .tree-area{height:calc(100vh - 97px);min-height:600px;position:relative;overflow:hidden;border:1px solid #322e36;border-radius:22px;background:radial-gradient(circle at 50% 42%,#2b2630 0,#1d1a21 46%,#151319 100%);cursor:grab}.tree-area.dragging{cursor:grabbing}
-.tree-title{position:absolute;z-index:20;top:22px;left:25px}.tree-title h2{font-size:17px}.tree-title p{color:var(--muted);font-size:11px;margin-top:5px}
-.hint{position:absolute;right:24px;bottom:18px;color:#746d78;font-size:11px;z-index:20}
-.canvas{position:absolute;width:1500px;height:900px;left:50%;top:50%;transform:translate(-50%,-50%);transform-origin:center;transition:transform .08s linear}
-.lines{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
-.connection{stroke:#655b6b;stroke-width:3;fill:none;stroke-linecap:round}
-.connection.soft{stroke:#4d4652;stroke-width:2}
+.tree-title{position:absolute;z-index:20;top:22px;left:25px}.tree-title h2{font-size:17px}.tree-title p{color:var(--muted);font-size:11px;margin-top:5px}.hint{position:absolute;right:24px;bottom:18px;color:#746d78;font-size:11px;z-index:20}
+.canvas{position:absolute;width:1500px;height:900px;left:50%;top:50%;transform:translate(-50%,-50%);transform-origin:center;transition:transform .08s linear}.lines{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.connection{stroke:#655b6b;stroke-width:3;fill:none;stroke-linecap:round}.connection.soft{stroke:#4d4652;stroke-width:2}
 .node{position:absolute;width:150px;text-align:center;z-index:4;cursor:pointer;user-select:none;transition:filter .2s,transform .2s}.node:hover{filter:brightness(1.16)}.node.selected{filter:brightness(1.2)}
-.leaf{width:82px;height:82px;margin:auto;border-radius:54% 46% 52% 48%;background:linear-gradient(145deg,#403746,#2b2730);border:2px solid #6e6175;box-shadow:0 12px 28px #0007;display:flex;align-items:center;justify-content:center;position:relative;transform:rotate(-2deg)}.leaf:after{content:"";position:absolute;width:18px;height:31px;right:-10px;bottom:-11px;border-radius:3px 100% 3px 100%;background:#594d60;transform:rotate(35deg)}.avatar{width:62px;height:62px;border-radius:50%;display:grid;place-items:center;background:#504658;border:2px solid #776b7e;font-weight:700;font-size:22px;transform:rotate(2deg)}.node.dead .leaf{filter:grayscale(.7);opacity:.65}.node.dead .avatar{background:#39353b}.name{font-size:14px;font-weight:650;margin-top:12px}.meta{font-size:10px;color:#827a87;margin-top:4px}
+.leaf{width:82px;height:82px;margin:auto;border-radius:54% 46% 52% 48%;background:linear-gradient(145deg,#403746,#2b2730);border:2px solid #6e6175;box-shadow:0 12px 28px #0007;display:flex;align-items:center;justify-content:center;position:relative;transform:rotate(-2deg)}.leaf:after{content:"";position:absolute;width:18px;height:31px;right:-10px;bottom:-11px;border-radius:3px 100% 3px 100%;background:#594d60;transform:rotate(35deg)}
+.avatar{width:62px;height:62px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(145deg,#55495c,#39323f);border:2px solid #776b7e;font-weight:700;font-size:22px;transform:rotate(2deg)}.node.dead .leaf{filter:grayscale(.7);opacity:.65}.node.dead .avatar{background:#39353b}.name{font-size:14px;font-weight:650;margin-top:12px}.meta{font-size:10px;color:#827a87;margin-top:4px}
 .evelyn{left:675px;top:72px}.alice{left:405px;top:350px}.james{left:945px;top:350px}.emma{left:405px;top:625px}.noah{left:675px;top:625px}.lily{left:945px;top:625px}
 .profile{position:absolute;right:18px;top:72px;width:245px;background:#211e26eF;border:1px solid #39333e;border-radius:17px;padding:17px;z-index:30;backdrop-filter:blur(14px);box-shadow:0 20px 50px #0006;opacity:0;transform:translateX(18px);pointer-events:none;transition:.22s}.profile.show{opacity:1;transform:translateX(0);pointer-events:auto}.profile .big{width:58px;height:58px;border-radius:50%;background:#504658;border:2px solid #776b7e;display:grid;place-items:center;font-weight:700;font-size:21px;margin-bottom:11px}.profile h3{font-size:18px}.profile .small{color:var(--muted);font-size:11px;margin-top:4px}.stats{display:grid;gap:8px;margin-top:16px}.stat{padding:9px 10px;border-radius:10px;background:#29252e;font-size:11px;color:#aaa2ad}.stat b{color:#eee7ef;font-weight:550}
-.constellation .canvas{width:1500px;height:900px}.constellation .leaf{border-radius:50%;width:58px;height:58px;background:#292631;border-color:#887792;box-shadow:0 0 25px #9b7fa044}.constellation .avatar{width:42px;height:42px;font-size:15px}.constellation .name,.constellation .meta{margin-top:8px}.starfield{position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(circle,#d5c9da 1px,transparent 1px),radial-gradient(circle,#8e7e98 1px,transparent 1px);background-size:137px 137px,211px 211px;background-position:18px 30px,77px 91px;opacity:.16}
+.constellation .leaf{border-radius:50%;width:58px;height:58px;background:#292631;border-color:#887792;box-shadow:0 0 25px #9b7fa044}.constellation .avatar{width:42px;height:42px;font-size:15px}.constellation .name,.constellation .meta{margin-top:8px}.starfield{position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(circle,#d5c9da 1px,transparent 1px),radial-gradient(circle,#8e7e98 1px,transparent 1px);background-size:137px 137px,211px 211px;background-position:18px 30px,77px 91px;opacity:.16}
+.modal{position:fixed;inset:0;background:#08070bcc;display:flex;align-items:center;justify-content:center;z-index:100;opacity:0;pointer-events:none;transition:.2s}.modal.show{opacity:1;pointer-events:auto}.dialog{width:430px;background:#211e27;border:1px solid #423947;border-radius:20px;padding:24px;box-shadow:0 30px 90px #0008}.dialog h2{font-size:20px}.dialog p{font-size:12px;color:var(--muted);margin-top:5px;margin-bottom:20px}.form{display:grid;gap:12px}.field label{display:block;font-size:11px;color:#a79eaa;margin-bottom:6px}.field input,.field select{width:100%;border:1px solid #403844;background:#18161c;color:#eee8ef;border-radius:10px;padding:11px 12px;outline:none}.field input:focus,.field select:focus{border-color:#75627f}.form-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:8px}.empty-add{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);padding:12px 16px;border:1px solid #4c4053;background:#29232e;color:#eee;border-radius:12px;cursor:pointer}
 </style>
 </head>
 <body>
 <div class="app">
-<aside class="sidebar">
-<div class="logo">SIMORA</div>
-<div class="subtitle">Древо династии</div>
-<nav class="menu">
-<button class="active" data-view="tree">🌳 Дерево</button>
-<button data-view="constellation">✦ Созвездие</button>
-<button>📖 Хроника</button>
-<button>🏆 Достижения</button>
-</nav>
-</aside>
+<aside class="sidebar"><div class="logo">SIMORA</div><div class="subtitle">Древо династии</div><nav class="menu">
+<button class="active" data-view="tree">🌳 Дерево</button><button data-view="constellation">✦ Созвездие</button><button>📖 Хроника</button><button>🏆 Достижения</button>
+</nav></aside>
 <main class="main">
-<div class="topbar">
-<div class="title">Blackwood Legacy</div>
-<div class="switch"><button class="active" data-view="tree">🌳 Дерево</button><button data-view="constellation">✦ Созвездие</button></div>
-</div>
-<section class="tree-area" id="area">
-<div class="starfield"></div>
-<div class="tree-title"><h2>Blackwood</h2><p>3 поколения · 6 персонажей</p></div>
-<div class="canvas" id="canvas">
-<svg class="lines" viewBox="0 0 1500 900">
-<path class="connection" d="M750 154 C750 225 480 235 480 350"/>
-<path class="connection" d="M750 154 C750 225 1020 235 1020 350"/>
-<path class="connection soft" d="M480 432 C480 520 480 535 480 625"/>
-<path class="connection soft" d="M480 432 C560 510 750 535 750 625"/>
-<path class="connection soft" d="M1020 432 C1020 520 1020 535 1020 625"/>
-</svg>
-<div class="node evelyn" data-name="Evelyn Blackwood" data-gen="I поколение" data-info="Основательница рода · 2 ребёнка · 7 потомков"><div class="leaf"><div class="avatar">E</div></div><div class="name">Evelyn</div><div class="meta">I поколение</div></div>
-<div class="node alice" data-name="Alice Blackwood" data-gen="II поколение" data-info="Дочь Evelyn · Партнёр: Ryan · 2 ребёнка"><div class="leaf"><div class="avatar">A</div></div><div class="name">Alice</div><div class="meta">II поколение</div></div>
-<div class="node james" data-name="James Blackwood" data-gen="II поколение" data-info="Сын Evelyn · Не женат · Карьера: бизнес"><div class="leaf"><div class="avatar">J</div></div><div class="name">James</div><div class="meta">II поколение</div></div>
-<div class="node emma" data-name="Emma Blackwood" data-gen="III поколение" data-info="Дочь Alice · Амбициозная · Романтичная"><div class="leaf"><div class="avatar">E</div></div><div class="name">Emma</div><div class="meta">III поколение</div></div>
-<div class="node noah" data-name="Noah Blackwood" data-gen="III поколение" data-info="Сын Alice · Музыкант · 19 лет"><div class="leaf"><div class="avatar">N</div></div><div class="name">Noah</div><div class="meta">III поколение</div></div>
-<div class="node lily dead" data-name="Lily Blackwood" data-gen="III поколение" data-info="Дочь James · Умерла в 2024 · Память рода"><div class="leaf"><div class="avatar">L</div></div><div class="name">Lily</div><div class="meta">III поколение · †</div></div>
-</div>
-<div class="profile" id="profile"><div class="big" id="profileAvatar">A</div><h3 id="profileName">Alice Blackwood</h3><div class="small" id="profileGen">II поколение</div><div class="stats"><div class="stat" id="profileInfo">Дочь Evelyn · Партнёр: Ryan · 2 ребёнка</div><div class="stat"><b>Статус:</b> Жива</div><div class="stat"><b>Ветка:</b> Blackwood</div></div></div>
-<div class="hint">Перетаскивай дерево мышью · Колесо — масштаб</div>
-</section>
-</main>
-</div>
+<div class="topbar"><div class="title">Blackwood Legacy</div><div class="actions"><button class="action primary" id="addBtn">＋ Добавить сима</button><div class="switch"><button class="active" data-view="tree">🌳 Дерево</button><button data-view="constellation">✦ Созвездие</button></div></div></div>
+<section class="tree-area" id="area"><div class="starfield"></div><div class="tree-title"><h2>Blackwood</h2><p id="counter">3 поколения · 6 персонажей</p></div>
+<div class="canvas" id="canvas"><svg class="lines" viewBox="0 0 1500 900" id="lines"></svg><div id="nodes"></div></div>
+<div class="profile" id="profile"><div class="big" id="profileAvatar">A</div><h3 id="profileName">Alice Blackwood</h3><div class="small" id="profileGen">II поколение</div><div class="stats"><div class="stat" id="profileInfo"></div><div class="stat" id="profileStatus"></div><div class="stat"><b>Ветка:</b> Blackwood</div></div></div>
+<div class="hint">Перетаскивай дерево мышью · Колесо — масштаб</div></section>
+</main></div>
+<div class="modal" id="modal"><div class="dialog"><h2>Новый сим</h2><p>Добавь персонажа — SIMORA сама поместит его в династию.</p><form class="form" id="form">
+<div class="field"><label>Имя</label><input id="firstName" required placeholder="Например, Victoria"></div>
+<div class="field"><label>Фамилия</label><input id="lastName" required placeholder="Blackwood"></div>
+<div class="field"><label>Поколение</label><select id="generation"><option value="I">I поколение</option><option value="II">II поколение</option><option value="III" selected>III поколение</option><option value="IV">IV поколение</option><option value="V">V поколение</option></select></div>
+<div class="field"><label>Статус</label><select id="status"><option>Жива</option><option>Умерла</option></select></div>
+<div class="form-actions"><button type="button" class="action" id="cancelBtn">Отмена</button><button class="action primary">Добавить в дерево</button></div>
+</form></div></div>
 <script>
-const area=document.getElementById('area'),canvas=document.getElementById('canvas'),profile=document.getElementById('profile');
-const nameEl=document.getElementById('profileName'),genEl=document.getElementById('profileGen'),infoEl=document.getElementById('profileInfo'),avatarEl=document.getElementById('profileAvatar');
+const area=document.getElementById('area'),canvas=document.getElementById('canvas'),nodesEl=document.getElementById('nodes'),lines=document.getElementById('lines'),profile=document.getElementById('profile');
+const nameEl=document.getElementById('profileName'),genEl=document.getElementById('profileGen'),infoEl=document.getElementById('profileInfo'),statusEl=document.getElementById('profileStatus'),avatarEl=document.getElementById('profileAvatar'),counter=document.getElementById('counter');
+const modal=document.getElementById('modal'),form=document.getElementById('form');
 let x=0,y=0,scale=1,drag=false,sx=0,sy=0,mode='tree';
+const seed=[
+{id:'evelyn',first:'Evelyn',last:'Blackwood',gen:'I',status:'Жива',info:'Основательница рода · 2 ребёнка · 7 потомков',x:675,y:72},
+{id:'alice',first:'Alice',last:'Blackwood',gen:'II',status:'Жива',info:'Дочь Evelyn · Партнёр: Ryan · 2 ребёнка',x:405,y:350},
+{id:'james',first:'James',last:'Blackwood',gen:'II',status:'Жива',info:'Сын Evelyn · Не женат · Карьера: бизнес',x:945,y:350},
+{id:'emma',first:'Emma',last:'Blackwood',gen:'III',status:'Жива',info:'Дочь Alice · Амбициозная · Романтичная',x:405,y:625},
+{id:'noah',first:'Noah',last:'Blackwood',gen:'III',status:'Жива',info:'Сын Alice · Музыкант · 19 лет',x:675,y:625},
+{id:'lily',first:'Lily',last:'Blackwood',gen:'III',status:'Умерла',info:'Дочь James · Умерла в 2024 · Память рода',x:945,y:625}
+];
+let custom=JSON.parse(localStorage.getItem('simora-custom')||'[]');let people=[...seed,...custom];
+function renderPeople(){nodesEl.innerHTML='';lines.innerHTML='';people.forEach((p,i)=>{const el=document.createElement('div');el.className='node '+(p.status==='Умерла'?'dead':'');el.style.left=p.x+'px';el.style.top=p.y+'px';el.dataset.id=p.id;el.innerHTML=`<div class="leaf"><div class="avatar">${p.first[0]}</div></div><div class="name">${p.first}</div><div class="meta">${p.gen} поколение${p.status==='Умерла'?' · †':''}</div>`;el.onclick=()=>selectPerson(p,el);nodesEl.appendChild(el)});drawConnections();counter.textContent=`${new Set(people.map(p=>p.gen)).size} поколения · ${people.length} персонажей`}
+function drawPath(d,soft=false){const path=document.createElementNS('http://www.w3.org/2000/svg','path');path.setAttribute('d',d);path.setAttribute('class','connection'+(soft?' soft':''));lines.appendChild(path)}
+function drawConnections(){if(people.length<2)return;const by=(n)=>people.find(p=>p.id===n);const e=by('evelyn'),a=by('alice'),j=by('james'),em=by('emma'),no=by('noah'),li=by('lily');if(e&&a)drawPath('M750 154 C750 225 480 235 480 350');if(e&&j)drawPath('M750 154 C750 225 1020 235 1020 350');if(a&&em)drawPath('M480 432 C480 520 480 535 480 625',true);if(a&&no)drawPath('M480 432 C560 510 750 535 750 625',true);if(j&&li)drawPath('M1020 432 C1020 520 1020 535 1020 625',true)}
+function selectPerson(p,el){document.querySelectorAll('.node').forEach(n=>n.classList.remove('selected'));el.classList.add('selected');nameEl.textContent=p.first+' '+p.last;genEl.textContent=p.gen+' поколение';infoEl.textContent=p.info;statusEl.innerHTML='<b>Статус:</b> '+p.status;avatarEl.textContent=p.first[0];profile.classList.add('show')}
 function render(){canvas.style.transform=`translate(calc(-50% + ${x}px),calc(-50% + ${y}px)) scale(${scale})`;area.classList.toggle('constellation',mode==='constellation')}
-area.addEventListener('mousedown',e=>{if(e.target.closest('.node')||e.target.closest('.profile'))return;drag=true;sx=e.clientX-x;sy=e.clientY-y;area.classList.add('dragging')});
-window.addEventListener('mousemove',e=>{if(!drag)return;x=e.clientX-sx;y=e.clientY-sy;render()});
-window.addEventListener('mouseup',()=>{drag=false;area.classList.remove('dragging')});
+area.addEventListener('mousedown',e=>{if(e.target.closest('.node')||e.target.closest('.profile'))return;drag=true;sx=e.clientX-x;sy=e.clientY-y;area.classList.add('dragging')});window.addEventListener('mousemove',e=>{if(!drag)return;x=e.clientX-sx;y=e.clientY-sy;render()});window.addEventListener('mouseup',()=>{drag=false;area.classList.remove('dragging')});
 area.addEventListener('wheel',e=>{e.preventDefault();scale+=e.deltaY<0?.08:-.08;scale=Math.max(.55,Math.min(1.8,scale));render()},{passive:false});
-document.querySelectorAll('.node').forEach(node=>node.addEventListener('click',()=>{document.querySelectorAll('.node').forEach(n=>n.classList.remove('selected'));node.classList.add('selected');nameEl.textContent=node.dataset.name;genEl.textContent=node.dataset.gen;infoEl.textContent=node.dataset.info;avatarEl.textContent=node.dataset.name[0];profile.classList.add('show')}));
 function setView(v){mode=v;document.querySelectorAll('[data-view]').forEach(b=>b.classList.toggle('active',b.dataset.view===v));render()}
 document.querySelectorAll('[data-view]').forEach(b=>b.addEventListener('click',()=>setView(b.dataset.view)));
-render();
+document.getElementById('addBtn').onclick=()=>modal.classList.add('show');document.getElementById('cancelBtn').onclick=()=>modal.classList.remove('show');
+modal.addEventListener('click',e=>{if(e.target===modal)modal.classList.remove('show')});
+form.addEventListener('submit',e=>{e.preventDefault();const first=document.getElementById('firstName').value.trim(),last=document.getElementById('lastName').value.trim(),gen=document.getElementById('generation').value,status=document.getElementById('status').value;const same=people.filter(p=>p.gen===gen).length;const p={id:'custom-'+Date.now(),first,last,gen,status,info:'Новый персонаж династии',x:300+(same%5)*270,y:170+(['I','II','III','IV','V'].indexOf(gen))*135};custom.push(p);localStorage.setItem('simora-custom',JSON.stringify(custom));people=[...seed,...custom];renderPeople();render();modal.classList.remove('show');form.reset()});
+renderPeople();render();
 </script>
 </body>
 </html>
