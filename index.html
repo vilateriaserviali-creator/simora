@@ -32,31 +32,21 @@ body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-ser
 .constellation .branch{stroke:#8c765e;stroke-width:2;filter:drop-shadow(0 0 8px #b5965a44)}
 .photo-note{font-size:10px;color:#756c79}
 
-/* SIMORA living tree */
-.tree-area{background:radial-gradient(ellipse at 50% 15%,#f0e1c8 0,#e5d2b1 44%,#d2b990 100%);box-shadow:0 28px 75px #60472d25,inset 0 1px #f7ead5}
-.tree-art{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible;filter:drop-shadow(0 18px 18px #5b402a28);z-index:1}.tree-foliage{filter:drop-shadow(0 5px 8px #5b402a1f)}
-#nodes{position:relative;z-index:5}
-.branch{stroke-linecap:round;stroke-linejoin:round}
-.canvas{width:1560px;height:930px}
-.node{width:190px;z-index:10}
-.leaf{width:168px;height:194px;position:relative;margin:auto;background:transparent;border:0;box-shadow:none}
-.avatar{position:absolute;left:28px;top:28px;width:112px;height:142px;border-radius:58px 58px 50px 50px;border:5px solid #d5bb91;background:#b69a78;box-shadow:0 13px 27px #4f39272f;overflow:hidden;z-index:3}
-.avatar img{width:100%;height:100%;object-fit:cover;display:block}
-.avatar .initial{display:grid;place-items:center;width:100%;height:100%;font:34px Georgia,serif;color:#604834}
-.avatar:after{content:"";position:absolute;inset:3px;border:1px solid #987950;border-radius:54px 54px 46px 46px;pointer-events:none}
-.ivy{position:absolute;inset:0;width:168px;height:194px;z-index:5;overflow:visible;pointer-events:none}
-.ivy-stem{fill:none;stroke:#4f6b42;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
-.ivy-tendril{fill:none;stroke:#738b5a;stroke-width:1.8;stroke-linecap:round}
-.ivy-leaf-layer{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
-.ivy-leaf-layer use{fill:#718a59;stroke:#4f6b40;stroke-width:1.1;filter:drop-shadow(0 2px 2px #40312430)}
-.ivy-leaf-layer use:nth-child(2n){fill:#8da56b}
-.ivy-leaf-layer use:nth-child(3n){fill:#607c4c}
-.node.dead .ivy-stem{stroke:#7c765f}.node.dead .ivy-leaf-layer use{fill:#91876d;stroke:#716953}
-.node.selected .avatar{border-color:#b2945e;box-shadow:0 0 0 4px #b2945e35,0 16px 30px #4c37263b}
-.name{position:relative;z-index:8;display:inline-block;margin-top:0;padding:7px 20px 8px;background:linear-gradient(#e6d3b0,#d0b68b);border:1px solid #a58459;border-radius:5px 5px 11px 11px;box-shadow:0 7px 15px #59402728;font:14px Georgia,serif;color:#493629}
-.meta{position:relative;z-index:8;font-size:10px;color:#765e46;margin-top:4px}
-.evelyn{left:655px;top:70px}.alice{left:285px;top:300px}.james{left:1000px;top:300px}.emma{left:300px;top:555px}.noah{left:650px;top:555px}.lily{left:985px;top:550px}
-.node:hover{filter:brightness(1.035);transform:translateY(-4px)}
+/* SIMORA living botanical tree — tree mode only */
+.tree-area{position:relative;background:
+ radial-gradient(circle at 50% 18%,#f2e4cc 0%,#ead8b8 38%,#d9c19a 78%,#cbb28a 100%);
+ box-shadow:inset 0 1px #f8ecd8, inset 0 -35px 90px #72533322}
+.tree-area:after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.10;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.32'/%3E%3C/svg%3E");mix-blend-mode:multiply}
+.tree-art{z-index:1;filter:drop-shadow(0 18px 18px #50351f26)}
+.tree-foliage{filter:blur(.15px) drop-shadow(0 5px 9px #47332120)}
+#nodes{z-index:5}
+.node{z-index:8}
+.avatar{background:#b79b78;border-color:#d8c19a;box-shadow:0 12px 28px #4c352326}
+.ivy-stem{stroke:#4e6b43;stroke-width:3.6}
+.ivy-leaf-layer use{fill:#6d8556;stroke:#506a42;stroke-width:1}
+.ivy-leaf-layer use:nth-child(2n){fill:#879f67}.ivy-leaf-layer use:nth-child(3n){fill:#5d7749}
+.name{background:linear-gradient(180deg,#e8d5b2,#cfb58a);border-color:#a58459;color:#49362a}
+.meta{color:#735d46}
 </style>
 </head>
 <body>
@@ -70,52 +60,66 @@ body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-ser
 <div class="canvas" id="canvas">
 <svg class="tree-art" viewBox="0 0 1500 900" aria-hidden="true">
 <defs>
- <linearGradient id="trunk" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#4f3424"/><stop offset=".28" stop-color="#765039"/><stop offset=".55" stop-color="#9a704d"/><stop offset=".78" stop-color="#704a34"/><stop offset="1" stop-color="#4a3022"/></linearGradient>
- <radialGradient id="canopy" cx=".5" cy=".5"><stop stop-color="#a4ad7c" stop-opacity=".48"/><stop offset="1" stop-color="#7e8d60" stop-opacity="0"/></radialGradient>
- <filter id="treeShadow"><feGaussianBlur stdDeviation="11"/></filter>
+ <linearGradient id="realBark" x1="0" y1="0" x2="1" y2=".15"><stop stop-color="#3f291d"/><stop offset=".2" stop-color="#63422e"/><stop offset=".43" stop-color="#8a6040"/><stop offset=".58" stop-color="#6d482f"/><stop offset=".82" stop-color="#4c3022"/><stop offset="1" stop-color="#2f1e16"/></linearGradient>
+ <linearGradient id="barkLight" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#c09668" stop-opacity=".55"/><stop offset=".5" stop-color="#8a6040" stop-opacity=".12"/><stop offset="1" stop-color="#d0a77a" stop-opacity=".38"/></linearGradient>
+ <radialGradient id="leafMass"><stop stop-color="#71845a" stop-opacity=".86"/><stop offset=".65" stop-color="#64784f" stop-opacity=".64"/><stop offset="1" stop-color="#536743" stop-opacity="0"/></radialGradient>
+ <filter id="paperTexture"><feTurbulence type="fractalNoise" baseFrequency=".025" numOctaves="3" seed="7"/><feColorMatrix values="0 0 0 0 .43 0 0 0 0 .34 0 0 0 0 .24 0 0 0 .12 0"/></filter>
+ <filter id="barkTexture"><feTurbulence type="fractalNoise" baseFrequency=".055 .18" numOctaves="4" seed="11" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="7" xChannelSelector="R" yChannelSelector="G"/></filter>
+ <filter id="softShadow"><feGaussianBlur stdDeviation="13"/></filter>
 </defs>
-<!-- broad canopy shadow, deliberately irregular -->
-<path d="M184 286 C154 225 213 164 292 176 C316 101 407 75 475 124 C535 52 638 81 678 137 C741 75 826 91 862 151 C927 89 1032 112 1047 185 C1134 157 1225 205 1210 276 C1291 297 1317 378 1260 429 C1300 501 1240 560 1159 548 C1138 623 1041 646 979 603 C925 670 823 655 786 598 C716 650 614 624 590 566 C513 615 414 588 399 522 C312 550 232 503 247 433 C166 425 135 348 184 286Z" fill="url(#canopy)" opacity=".8"/>
-<!-- tree shadow -->
-<path d="M750 876 C690 764 690 664 706 571 C720 488 697 408 672 349 C650 297 668 246 707 222" fill="none" stroke="#4b3525" stroke-width="92" stroke-linecap="round" filter="url(#treeShadow)" opacity=".2"/>
-<!-- massive irregular trunk -->
-<path d="M750 875 C701 794 704 709 719 628 C735 543 723 475 690 401 C658 329 662 269 707 225 C729 203 741 176 750 137" fill="none" stroke="url(#trunk)" stroke-width="72" stroke-linecap="round"/>
-<path d="M749 870 C773 770 764 687 750 611 C735 532 751 458 790 395 C822 342 838 300 825 252 C813 207 807 172 817 135" fill="none" stroke="#68452f" stroke-width="30" stroke-linecap="round" opacity=".65"/>
-<!-- major natural branches -->
-<g fill="none" stroke="url(#trunk)" stroke-linecap="round" stroke-linejoin="round">
- <path d="M731 515 C665 464 592 423 510 400 C423 376 337 335 270 278" stroke-width="49"/>
- <path d="M770 505 C837 454 910 413 991 390 C1080 365 1160 320 1227 268" stroke-width="45"/>
- <path d="M711 407 C642 365 581 316 529 255 C490 210 454 179 414 154" stroke-width="33"/>
- <path d="M795 398 C866 352 924 307 978 252 C1019 210 1054 180 1092 157" stroke-width="31"/>
- <path d="M721 617 C655 589 586 567 510 561 C430 555 362 529 304 491" stroke-width="27"/>
- <path d="M779 612 C849 581 916 561 991 558 C1068 554 1134 529 1191 487" stroke-width="25"/>
+
+<!-- natural canopy masses -->
+<g opacity=".92">
+ <ellipse cx="285" cy="238" rx="170" ry="110" fill="url(#leafMass)"/>
+ <ellipse cx="455" cy="156" rx="175" ry="105" fill="url(#leafMass)"/>
+ <ellipse cx="675" cy="128" rx="205" ry="118" fill="url(#leafMass)"/>
+ <ellipse cx="895" cy="137" rx="200" ry="116" fill="url(#leafMass)"/>
+ <ellipse cx="1110" cy="178" rx="190" ry="115" fill="url(#leafMass)"/>
+ <ellipse cx="1230" cy="268" rx="145" ry="100" fill="url(#leafMass)"/>
+ <ellipse cx="385" cy="390" rx="120" ry="82" fill="url(#leafMass)"/>
+ <ellipse cx="1115" cy="390" rx="125" ry="82" fill="url(#leafMass)"/>
 </g>
-<g class="tree-foliage" opacity=".9">
- <g transform="translate(285 244)"><ellipse rx="70" ry="38" fill="#899969"/><ellipse cx="-42" cy="5" rx="48" ry="28" fill="#78895c"/><ellipse cx="38" cy="-8" rx="52" ry="30" fill="#9baa76"/></g>
- <g transform="translate(470 166)"><ellipse rx="66" ry="36" fill="#8e9d6c"/><ellipse cx="-32" cy="-8" rx="44" ry="27" fill="#74875a"/><ellipse cx="36" cy="5" rx="46" ry="28" fill="#a2ad7a"/></g>
- <g transform="translate(650 150)"><ellipse rx="76" ry="39" fill="#879768"/><ellipse cx="-45" cy="7" rx="48" ry="28" fill="#718354"/><ellipse cx="43" cy="-5" rx="55" ry="31" fill="#9dab75"/></g>
- <g transform="translate(835 154)"><ellipse rx="74" ry="39" fill="#8c9c6c"/><ellipse cx="-42" cy="-4" rx="50" ry="29" fill="#738558"/><ellipse cx="40" cy="7" rx="51" ry="29" fill="#a0ac76"/></g>
- <g transform="translate(1045 174)"><ellipse rx="70" ry="37" fill="#8b9b69"/><ellipse cx="-42" cy="5" rx="48" ry="28" fill="#738557"/><ellipse cx="39" cy="-7" rx="49" ry="29" fill="#a0ab76"/></g>
- <g transform="translate(1200 250)"><ellipse rx="62" ry="34" fill="#819261"/><ellipse cx="-36" cy="3" rx="44" ry="26" fill="#6f8153"/><ellipse cx="34" cy="-5" rx="45" ry="27" fill="#99a972"/></g>
- <g transform="translate(390 395)"><ellipse rx="48" ry="27" fill="#879767"/><ellipse cx="-26" cy="-4" rx="36" ry="22" fill="#728457"/><ellipse cx="29" cy="3" rx="34" ry="21" fill="#9eaa75"/></g>
- <g transform="translate(1110 400)"><ellipse rx="49" ry="27" fill="#899969"/><ellipse cx="-28" cy="3" rx="35" ry="21" fill="#708254"/><ellipse cx="29" cy="-4" rx="36" ry="22" fill="#a0ac76"/></g>
+
+<!-- ground shadow -->
+<ellipse cx="750" cy="850" rx="220" ry="34" fill="#38261b" opacity=".18" filter="url(#softShadow)"/>
+
+<!-- trunk silhouette -->
+<g fill="none" stroke="url(#realBark)" stroke-linecap="round" stroke-linejoin="round" filter="url(#barkTexture)">
+ <path d="M748 860 C708 778 713 700 728 624 C744 545 735 478 700 408 C665 337 667 278 704 230 C729 198 740 159 748 108" stroke-width="92"/>
+ <path d="M754 858 C782 773 773 690 758 614 C743 535 758 461 797 396 C831 339 844 294 829 245 C815 200 810 157 818 118" stroke-width="34"/>
+ <path d="M720 520 C647 465 566 420 480 398 C396 376 315 335 246 276" stroke-width="54"/>
+ <path d="M782 515 C855 462 929 418 1012 395 C1095 371 1170 329 1245 273" stroke-width="50"/>
+ <path d="M703 405 C635 363 578 315 527 255 C489 210 450 177 406 151" stroke-width="37"/>
+ <path d="M799 397 C869 353 925 307 978 254 C1018 213 1054 179 1098 151" stroke-width="35"/>
+ <path d="M723 621 C650 590 579 569 505 562 C431 555 365 529 301 491" stroke-width="29"/>
+ <path d="M777 618 C850 587 921 566 994 560 C1069 555 1138 528 1200 486" stroke-width="27"/>
 </g>
-<!-- fine branch tips -->
-<g fill="none" stroke="#8e6a4b" stroke-linecap="round">
- <path d="M270 278 C224 247 190 214 157 174" stroke-width="11"/>
- <path d="M270 278 C219 285 179 279 137 259" stroke-width="7"/>
- <path d="M1227 268 C1270 235 1306 201 1335 160" stroke-width="10"/>
- <path d="M1227 268 C1280 278 1319 269 1354 247" stroke-width="7"/>
- <path d="M414 154 C378 122 352 92 333 57" stroke-width="8"/>
- <path d="M1092 157 C1124 120 1146 89 1158 53" stroke-width="8"/>
- <path d="M304 491 C255 475 215 447 179 412" stroke-width="7"/>
- <path d="M1191 487 C1241 469 1281 440 1319 403" stroke-width="7"/>
+
+<!-- bark ridges -->
+<g fill="none" stroke="url(#barkLight)" stroke-linecap="round" opacity=".55">
+ <path d="M724 833 C704 749 724 670 736 596 C752 503 735 434 698 365" stroke-width="7"/>
+ <path d="M755 835 C774 755 760 675 748 603 C733 516 751 449 789 391" stroke-width="5"/>
+ <path d="M712 498 C642 446 568 414 481 390" stroke-width="6"/>
+ <path d="M789 491 C855 447 932 414 1011 392" stroke-width="5"/>
+ <path d="M704 388 C635 345 583 298 531 238" stroke-width="5"/>
 </g>
-<!-- subtle bark veins -->
-<g fill="none" stroke="#b08a61" stroke-width="4" opacity=".42" stroke-linecap="round">
- <path d="M726 828 C711 752 729 676 736 603"/><path d="M745 548 C705 475 682 430 669 372"/>
- <path d="M771 555 C816 485 846 435 858 385"/><path d="M703 457 C620 421 550 399 479 380"/>
- <path d="M797 449 C885 414 949 394 1021 379"/>
+
+<!-- fine natural twigs -->
+<g fill="none" stroke="#765038" stroke-linecap="round">
+ <path d="M246 276 C203 249 168 214 137 171" stroke-width="10"/><path d="M246 276 C197 282 157 270 118 244" stroke-width="6"/>
+ <path d="M1245 273 C1287 246 1320 210 1348 169" stroke-width="9"/><path d="M1245 273 C1294 283 1331 270 1370 246" stroke-width="6"/>
+ <path d="M406 151 C374 117 348 84 331 48" stroke-width="8"/><path d="M1098 151 C1126 117 1150 82 1164 45" stroke-width="8"/>
+ <path d="M301 491 C251 474 211 445 174 407" stroke-width="7"/><path d="M1200 486 C1250 468 1290 440 1325 401" stroke-width="7"/>
+</g>
+
+<!-- visible clusters of small leaves -->
+<g fill="#718458" opacity=".78">
+ <circle cx="244" cy="222" r="14"/><circle cx="277" cy="205" r="18"/><circle cx="310" cy="216" r="13"/><circle cx="342" cy="190" r="17"/>
+ <circle cx="421" cy="128" r="16"/><circle cx="452" cy="116" r="13"/><circle cx="485" cy="130" r="18"/>
+ <circle cx="605" cy="98" r="18"/><circle cx="642" cy="83" r="14"/><circle cx="682" cy="96" r="19"/><circle cx="724" cy="79" r="15"/>
+ <circle cx="835" cy="103" r="17"/><circle cx="872" cy="88" r="15"/><circle cx="914" cy="105" r="18"/>
+ <circle cx="1045" cy="132" r="18"/><circle cx="1082" cy="116" r="15"/><circle cx="1120" cy="136" r="18"/>
+ <circle cx="1190" cy="226" r="16"/><circle cx="1224" cy="214" r="13"/><circle cx="1252" cy="237" r="17"/>
 </g>
 </svg>
 <svg class="lines" viewBox="0 0 1500 900" id="lines"></svg><div id="nodes"></div></div>
