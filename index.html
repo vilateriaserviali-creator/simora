@@ -360,5 +360,91 @@
 
 </div>
 
-</body>
+</body><script>
+
+    const treeArea = document.querySelector('.tree-area');
+
+    let isDragging = false;
+    let startX = 0;
+    let startY = 0;
+    let offsetX = 0;
+    let offsetY = 0;
+
+    treeArea.addEventListener('mousedown', function(event) {
+
+        if (event.target.closest('.person')) {
+            return;
+        }
+
+        isDragging = true;
+
+        startX = event.clientX - offsetX;
+        startY = event.clientY - offsetY;
+
+        treeArea.style.cursor = 'grabbing';
+
+    });
+
+
+    treeArea.addEventListener('mousemove', function(event) {
+
+        if (!isDragging) {
+            return;
+        }
+
+        offsetX = event.clientX - startX;
+        offsetY = event.clientY - startY;
+
+        document.querySelectorAll('.person, .line').forEach(element => {
+
+            element.style.marginLeft = offsetX + 'px';
+            element.style.marginTop = offsetY + 'px';
+
+        });
+
+    });
+
+
+    treeArea.addEventListener('mouseup', function() {
+
+        isDragging = false;
+        treeArea.style.cursor = 'default';
+
+    });
+
+
+    treeArea.addEventListener('mouseleave', function() {
+
+        isDragging = false;
+        treeArea.style.cursor = 'default';
+
+    });
+
+
+    /* Масштабирование колесом */
+
+    let scale = 1;
+
+    treeArea.addEventListener('wheel', function(event) {
+
+        event.preventDefault();
+
+        if (event.deltaY < 0) {
+            scale += 0.1;
+        } else {
+            scale -= 0.1;
+        }
+
+        scale = Math.max(0.6, Math.min(scale, 1.8));
+
+        document.querySelectorAll('.person, .line').forEach(element => {
+
+            element.style.transform =
+                `scale(${scale})`;
+
+        });
+
+    }, { passive: false });
+
+</script>
 </html>
