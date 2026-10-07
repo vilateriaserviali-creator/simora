@@ -33,6 +33,26 @@ body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-ser
 .photo-note{font-size:10px;color:#756c79}
 
 /* SIMORA visual polish */
+/* living ivy portrait system */
+.leaf{position:relative;width:126px;height:156px;margin:auto;background:transparent;border:0;border-radius:0;box-shadow:none;display:flex;align-items:center;justify-content:center;transform:none}
+.leaf:after{display:none}
+.avatar{position:relative;z-index:3;width:104px;height:132px;border-radius:52px 52px 45px 45px;background:#c4ae91;border:4px solid #d8c39f;box-shadow:0 10px 24px #60472d35;overflow:hidden}
+.avatar:after{content:"";position:absolute;inset:3px;border:1px solid #8f7657;border-radius:48px 48px 42px 42px;pointer-events:none;opacity:.65}
+.avatar img{width:100%;height:100%;object-fit:cover;display:block}
+.avatar .initial{display:grid;place-items:center;width:100%;height:100%;font-family:Georgia,serif;font-size:30px;color:#66503b}
+.ivy{position:absolute;z-index:4;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
+.ivy-stem{fill:none;stroke:#5f754f;stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 2px 2px #4e392633)}
+.ivy-leaves path{fill:#788d62;stroke:#5d714d;stroke-width:1.2;filter:drop-shadow(0 2px 2px #4d38242a)}
+.ivy-leaves path:nth-child(2n){fill:#91a477}
+.ivy-leaves path:nth-child(3n){fill:#687e56}
+.node:hover .ivy-stem{stroke:#536b46}
+.node:hover .ivy-leaves path{filter:drop-shadow(0 3px 4px #4d38243d)}
+.node.dead .ivy-stem{stroke:#7d7864;opacity:.7}
+.node.dead .ivy-leaves path{fill:#93896d;stroke:#776f5a;opacity:.65}
+.name{position:relative;z-index:6;display:inline-block;margin-top:2px;padding:6px 16px 7px;border-radius:5px 5px 10px 10px;background:#dfcbaa;border:1px solid #b49368;box-shadow:0 5px 13px #60472d22;font-family:Georgia,serif;font-size:14px;color:#4d392a}
+.meta{position:relative;z-index:6;margin-top:4px;color:#7d684f}
+.evelyn{left:675px;top:40px}.alice{left:330px;top:285px}.james{left:995px;top:285px}.emma{left:325px;top:555px}.noah{left:675px;top:555px}.lily{left:1000px;top:555px}
+
 :root{--ink:#49372b;--ink-soft:#705d49;--cream:#eadcc5;--cream-deep:#d4bea0;--sage:#899777;--sage-deep:#68785b;--wood:#795b43;--wood-light:#a07e5e;--blush:#b98b82;--gold:#b3955b}
 body{background:radial-gradient(ellipse at 50% 0%,#f0e1c9 0%,#e6d5b9 43%,#d3bea0 100%)}
 .app:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.22;background-image:radial-gradient(#8c7458 0.6px,transparent .6px);background-size:18px 18px;mask-image:linear-gradient(to bottom,#000,transparent 80%)}
@@ -149,7 +169,7 @@ const seed=[
 {id:'lily',first:'Lily',last:'Blackwood',gen:'III',status:'Умерла',info:'Дочь James · Умерла в 2024 · Память рода',x:945,y:625}
 ];
 let custom=JSON.parse(localStorage.getItem('simora-custom')||'[]');let people=[...seed,...custom];
-function renderPeople(){nodesEl.innerHTML='';lines.innerHTML='';people.forEach((p,i)=>{const el=document.createElement('div');el.className='node '+(p.status==='Умерла'?'dead':'');el.style.left=p.x+'px';el.style.top=p.y+'px';el.dataset.id=p.id;const portrait=p.photo?'<img src="'+p.photo+'" alt="">':'<span class="initial">'+p.first[0]+'</span>';el.innerHTML='<div class="leaf"><div class="avatar">'+portrait+'</div></div><div class="name">'+p.first+'</div><div class="meta">'+p.gen+' поколение'+(p.status==='Умерла'?' · †':'')+'</div>';el.onclick=()=>selectPerson(p,el);nodesEl.appendChild(el)});drawConnections();counter.textContent=new Set(people.map(p=>p.gen)).size+' поколения · '+people.length+' персонажей'}
+function renderPeople(){nodesEl.innerHTML='';lines.innerHTML='';people.forEach((p,i)=>{const el=document.createElement('div');el.className='node '+(p.status==='Умерла'?'dead':'');el.style.left=p.x+'px';el.style.top=p.y+'px';el.dataset.id=p.id;const portrait=p.photo?'<img src="'+p.photo+'" alt="">':'<span class="initial">'+p.first[0]+'</span>';el.innerHTML='<div class="leaf"><svg class="ivy" viewBox="0 0 120 150" aria-hidden="true"><path class="ivy-stem" d="M13 133 C2 108 18 88 10 65 C2 42 18 23 35 16 C54 8 75 11 91 25 C108 40 113 61 106 81 C100 101 106 119 92 139" /><g class="ivy-leaves"><path d="M15 112 C2 108 1 95 14 91 C22 99 21 106 15 112Z"/><path d="M12 73 C1 67 3 55 16 54 C21 62 19 69 12 73Z"/><path d="M28 29 C18 19 23 8 36 10 C40 19 36 26 28 29Z"/><path d="M61 13 C59 2 69 -3 78 5 C78 15 71 20 61 13Z"/><path d="M96 39 C102 28 113 31 116 41 C110 49 102 49 96 39Z"/><path d="M105 74 C116 67 123 75 119 86 C109 89 103 84 105 74Z"/><path d="M97 112 C109 108 116 117 109 127 C99 128 94 122 97 112Z"/><path d="M77 139 C77 128 88 124 95 132 C93 143 85 146 77 139Z"/><path d="M37 139 C27 133 29 122 41 120 C48 128 46 136 37 139Z"/></g></svg><div class="avatar">'+portrait+'</div></div><div class="name">'+p.first+'</div><div class="meta">'+p.gen+' поколение'+(p.status==='Умерла'?' · †':'')+'</div>';el.onclick=()=>selectPerson(p,el);nodesEl.appendChild(el)});drawConnections();counter.textContent=new Set(people.map(p=>p.gen)).size+' поколения · '+people.length+' персонажей'}
 function drawPath(d,soft=false,cls='branch'){const path=document.createElementNS('http://www.w3.org/2000/svg','path');path.setAttribute('d',d);path.setAttribute('class',cls+(soft?' twig':''));lines.appendChild(path)}
 function drawConnections(){if(people.length<2)return;const by=n=>people.find(p=>p.id===n),e=by('evelyn'),a=by('alice'),j=by('james'),em=by('emma'),no=by('noah'),li=by('lily');drawPath('M750 150 C750 205 750 245 750 285');if(e&&a)drawPath('M750 245 C680 270 560 285 480 350');if(e&&j)drawPath('M750 245 C820 270 940 285 1020 350');if(a&&em)drawPath('M480 430 C480 505 480 555 480 625',true);if(a&&no)drawPath('M480 430 C545 500 680 555 750 625',true);if(j&&li)drawPath('M1020 430 C1020 505 1020 555 1020 625',true)}
 function selectPerson(p,el){document.querySelectorAll('.node').forEach(n=>n.classList.remove('selected'));el.classList.add('selected');nameEl.textContent=p.first+' '+p.last;genEl.textContent=p.gen+' поколение';infoEl.textContent=p.info;statusEl.innerHTML='<b>Статус:</b> '+p.status;avatarEl.textContent=p.first[0];profile.classList.add('show')}
